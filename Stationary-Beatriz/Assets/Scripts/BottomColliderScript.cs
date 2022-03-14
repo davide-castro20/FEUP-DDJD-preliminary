@@ -3,16 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bottom_collider_script : MonoBehaviour
+public class BottomColliderScript : MonoBehaviour
 {
     [SerializeField]
     private BoxCollider2D bc;
 
-    private player_script _ps;
+    private PlayerScript _ps;
     // Start is called before the first frame update
     void Start()
     {
-        _ps = bc.gameObject.GetComponent<player_script>();
+        _ps = bc.gameObject.GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
