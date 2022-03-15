@@ -8,7 +8,12 @@ public class BottomColliderScript : MonoBehaviour
     [SerializeField]
     private BoxCollider2D bc;
 
+    [SerializeField] 
+    private List<String> _jumpReseters;
+
     private PlayerScript _ps;
+    private int nColisions = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,17 +28,19 @@ public class BottomColliderScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (_jumpReseters.Contains(other.gameObject.tag))
         {
+            nColisions++;
             _ps.ResetJump();
         }
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (_jumpReseters.Contains(other.gameObject.tag))
         {
-            _ps.SetAirborne();
+            if(--nColisions == 0)
+                _ps.SetAirborne();
         }
     }
 }

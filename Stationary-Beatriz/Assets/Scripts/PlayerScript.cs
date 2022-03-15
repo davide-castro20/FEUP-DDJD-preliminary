@@ -41,17 +41,18 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(hMove);
         model.velocity = new Vector2(hMove * speed, model.velocity.y);
     }
 
     public void ResetJump()
     {
+        Debug.Log("Reset Jump");
         grounded = true;
     }
 
     public void SetAirborne()
     {
+        Debug.Log("Set Airborne");
         grounded = false;
     }
 }
