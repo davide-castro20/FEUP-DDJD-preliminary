@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Draggable
   - Box
+  - Bridge
   layers:
   - Default
   - TransparentFX
