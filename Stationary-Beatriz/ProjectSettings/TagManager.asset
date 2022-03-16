@@ -8,6 +8,8 @@ TagManager:
   - Draggable
   - Box
   - Bridge
+  - Janitor
+  - Spawn
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Draggable
-  - 
+  - Enemy
   - 
   - 
   - 
