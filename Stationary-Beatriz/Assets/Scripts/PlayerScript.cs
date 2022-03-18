@@ -9,6 +9,9 @@ public class PlayerScript : MonoBehaviour
     private float speed;
     [SerializeField]
     private float jumpSpeed;
+
+    [SerializeField] 
+    private float disguiseInvicibility;
     
     private bool _grounded = true;
     private Rigidbody2D _model;
@@ -38,10 +41,15 @@ public class PlayerScript : MonoBehaviour
             _grounded = false;
         }
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Disguise(5f);    
+        }
+        
         if (_disguiseTime > 0)
         {
             if ((_disguiseTime -= Time.deltaTime) < 0)
-                RemoveDisguise();
+                RemoveDisguise(false);
         }
     }
 
@@ -75,10 +83,19 @@ public class PlayerScript : MonoBehaviour
     {
         _animator.SetBool("Disguised", true);
         _disguiseTime = duration;
+        Debug.Log("Disguised");
     }
 
-    public void RemoveDisguise()
+    public void RemoveDisguise(bool invincibility)
     {
         _animator.SetBool("Disguised", false);
+        Debug.Log("Disguise Removed");
+        if (invincibility)
+            _disguiseTime = disguiseInvicibility;
+    }
+
+    public bool IsDisguised()
+    {
+        return _disguiseTime > 0;
     }
 }

@@ -15,6 +15,7 @@ public class JanitorScript : MonoBehaviour
     private Vector3 _rightPos;
     private Vector3 _currentTarget;
     private PlayerScript _ps;
+    private SpriteRenderer _spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +24,17 @@ public class JanitorScript : MonoBehaviour
         _leftPos = new Vector3(_initialPos.x - leftOffset, _initialPos.y, _initialPos.z);
         _rightPos = new Vector3(_initialPos.x + rightOffset, _initialPos.y, _initialPos.z);
 
-        _currentTarget = direction < 0 ? _leftPos : _rightPos;
+        if (direction < 0)
+        {
+            TurnLeft();
+        }
+        else
+        {
+            TurnRight();
+        }
 
         _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -33,11 +42,12 @@ public class JanitorScript : MonoBehaviour
     {
         if (transform.position == _rightPos)
         {
-            _currentTarget = _leftPos;
+            TurnLeft();
+
         }
         else if (transform.position == _leftPos)
         {
-            _currentTarget = _rightPos;
+            TurnRight();
         }
 
         transform.position = Vector3.MoveTowards(transform.position, _currentTarget, speed * Time.deltaTime);
@@ -47,7 +57,24 @@ public class JanitorScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            _ps.Kill();
+            if (_ps.IsDisguised())
+            {
+                _ps.RemoveDisguise(true);
+            }
+            else
+            {
+                _ps.Kill();
+            }
         }
+    }
+
+    private void TurnLeft()
+    {
+        _currentTarget = _leftPos;
+    }
+
+    private void TurnRight()
+    {
+        _currentTarget = _rightPos;
     }
 }
