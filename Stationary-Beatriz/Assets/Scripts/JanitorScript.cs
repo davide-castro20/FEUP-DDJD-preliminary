@@ -24,6 +24,10 @@ public class JanitorScript : MonoBehaviour
         _leftPos = new Vector3(_initialPos.x - leftOffset, _initialPos.y, _initialPos.z);
         _rightPos = new Vector3(_initialPos.x + rightOffset, _initialPos.y, _initialPos.z);
 
+        
+        _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        
         if (direction < 0)
         {
             TurnLeft();
@@ -32,9 +36,6 @@ public class JanitorScript : MonoBehaviour
         {
             TurnRight();
         }
-
-        _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -71,10 +72,12 @@ public class JanitorScript : MonoBehaviour
     private void TurnLeft()
     {
         _currentTarget = _leftPos;
+        _spriteRenderer.flipX = true;
     }
 
     private void TurnRight()
     {
         _currentTarget = _rightPos;
+        _spriteRenderer.flipX = false;
     }
 }
