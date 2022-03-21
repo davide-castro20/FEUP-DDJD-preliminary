@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.SpriteAssetUtilities;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
@@ -18,9 +19,12 @@ public class PlayerScript : MonoBehaviour
     private Vector3 _spawnPoint;
     
     private float _hMove = 0f;
+    private float _previousMove = 0f;
 
     private Animator _animator;
     private float _disguiseTime = 0;
+    
+    private SpriteRenderer _spriteRenderer;
     
     // Start is called before the first frame update
     void Start()
@@ -28,12 +32,24 @@ public class PlayerScript : MonoBehaviour
         _model = GetComponent<Rigidbody2D>();
         _spawnPoint = GameObject.FindGameObjectWithTag("Spawn").transform.position;
         _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
     
     // Update is called once per frame
     void Update()
     {
         _hMove = Input.GetAxisRaw("Horizontal");
+
+        if (_hMove < 0 && _previousMove >= 0)
+        {
+            TurnLeft();
+        } 
+        else if (_hMove > 0 && _previousMove <= 0)
+        {
+            TurnRight();
+        }
+        
+        _animator.SetFloat("Move", Math.Abs(_hMove));
 
         if (Input.GetButtonDown("Jump") && _grounded == true)
         {
@@ -51,6 +67,9 @@ public class PlayerScript : MonoBehaviour
             if ((_disguiseTime -= Time.deltaTime) < 0)
                 RemoveDisguise(false);
         }
+
+        if (_hMove != 0)
+            _previousMove = _hMove;
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -97,5 +116,15 @@ public class PlayerScript : MonoBehaviour
     public bool IsDisguised()
     {
         return _disguiseTime > 0;
+    }
+    
+    private void TurnLeft()
+    {
+        _spriteRenderer.flipX = true;
+    }
+
+    private void TurnRight()
+    {
+        _spriteRenderer.flipX = false;
     }
 }
