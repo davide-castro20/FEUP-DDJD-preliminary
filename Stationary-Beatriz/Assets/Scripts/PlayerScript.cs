@@ -35,6 +35,8 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenuScript.GamePaused) return; // TODO: change this?
+        
         _hMove = Input.GetAxisRaw("Horizontal");
 
         if (_hMove < 0 && _previousMove >= 0)
