@@ -10,13 +10,17 @@ public class PencilThrowerScript : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private float speed;
     
-    
+    private PlayerScript _ps; 
+    private Animator _animator;
+
     private float _currentTime = 0;
     
     // Start is called before the first frame update
     void Start()
     {
         _currentTime = throwRate;
+        _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,7 +32,23 @@ public class PencilThrowerScript : MonoBehaviour
             GameObject gameObject = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
             gameObject.GetComponent<ProjectileScript>().StartProjectile(range * direction, speed);
             _currentTime = throwRate;
+            _animator.SetTrigger("Throw");
         }
         
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (_ps.IsDisguised())
+            {
+                _ps.RemoveDisguise(true);
+            }
+            else
+            {
+                _ps.Kill();
+            }
+        }
     }
 }

@@ -10,6 +10,8 @@ public class ProjectileScript : MonoBehaviour
     private Vector3 _target;
     private bool _isInitialized = false;
     
+    private PlayerScript _ps; 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class ProjectileScript : MonoBehaviour
     {
         _speed = speed;
         _target = transform.position + new Vector3(range, 0, 0);
+        _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         _isInitialized = true;
     }
 
@@ -33,6 +36,21 @@ public class ProjectileScript : MonoBehaviour
         if (transform.position == _target)
         {
             Destroy(gameObject);
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (_ps.IsDisguised())
+            {
+                _ps.RemoveDisguise(true);
+            }
+            else
+            {
+                _ps.Kill();
+            }
         }
     }
 }
