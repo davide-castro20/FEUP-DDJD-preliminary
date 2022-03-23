@@ -10,6 +10,8 @@ TagManager:
   - Bridge
   - Janitor
   - Spawn
+  - Disguise
+  - BottomCollider
   layers:
   - Default
   - TransparentFX

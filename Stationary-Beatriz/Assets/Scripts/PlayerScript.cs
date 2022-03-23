@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
 
+
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
     private float speed;
     [SerializeField]
     private float jumpSpeed;
-
+    
     [SerializeField] 
     private float disguiseInvicibility;
     
@@ -31,6 +32,8 @@ public class PlayerScript : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
+    
+    
     
     // Update is called once per frame
     void Update()
@@ -56,11 +59,6 @@ public class PlayerScript : MonoBehaviour
             _grounded = false;
         }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Disguise(5f);    
-        }
-        
         if (_disguiseTime > 0)
         {
             if ((_disguiseTime -= Time.deltaTime) < 0)
