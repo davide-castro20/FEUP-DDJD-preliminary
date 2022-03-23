@@ -5,12 +5,15 @@ public class PauseMenuScript : MonoBehaviour
 {
     [SerializeField] private string mainMenuScene;
     public static bool GamePaused;
+    public bool levelComplete;
     private GameObject _pauseMenu;
+    private GameObject _levelCompleteMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         _pauseMenu = gameObject.transform.Find("PauseMenu").gameObject;
+        _levelCompleteMenu = gameObject.transform.Find("CompleteMenu").gameObject;
     }
 
     // Update is called once per frame
@@ -18,7 +21,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (GamePaused)
+            if (GamePaused && !levelComplete)
             {
                 ResumeGame();
             }
@@ -27,6 +30,14 @@ public class PauseMenuScript : MonoBehaviour
                 PauseGame();
             }
         }
+    }
+    
+    public void LevelComplete()
+    {
+        levelComplete = true;
+        GamePaused = true;
+        Time.timeScale = 0f;
+        _levelCompleteMenu.SetActive(true);
     }
     
     private void PauseGame()

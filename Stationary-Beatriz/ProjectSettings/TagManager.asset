@@ -12,6 +12,7 @@ TagManager:
   - Spawn
   - Disguise
   - BottomCollider
+  - Objective
   layers:
   - Default
   - TransparentFX
