@@ -6,9 +6,12 @@ using Vector3 = UnityEngine.Vector3;
 
 public class ProjectileScript : MonoBehaviour
 {
+    [SerializeField] private float anglesPerSecond = 270f;
+    
     private float _speed;
     private Vector3 _target;
     private bool _isInitialized = false;
+    private Vector3 _rotationVector;
     
     private PlayerScript _ps; 
     
@@ -20,6 +23,15 @@ public class ProjectileScript : MonoBehaviour
     public void StartProjectile(float range, float speed)
     {
         _speed = speed;
+        if (range < 0)
+        {
+            _rotationVector = Vector3.forward;
+        }
+        else
+        {
+            _rotationVector = Vector3.back;
+        }
+        
         _target = transform.position + new Vector3(range, 0, 0);
         _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         _isInitialized = true;
@@ -31,6 +43,7 @@ public class ProjectileScript : MonoBehaviour
         if (_isInitialized)
         {
             transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
+            transform.Rotate(_rotationVector * Time.deltaTime * anglesPerSecond);
         }
 
         if (transform.position == _target)
