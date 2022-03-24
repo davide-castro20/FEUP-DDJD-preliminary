@@ -2991,6 +2991,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PencilThrower
       objectReference: {fileID: 0}
+    - target: {fileID: 1083799584596109881, guid: ee334211c21c3f74ca9c4a74de3bcb0e, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 5795666398370919764, guid: cb29a191cca089547ba6bbc7b41df0e1, type: 3}
     - target: {fileID: 1083799584596109882, guid: ee334211c21c3f74ca9c4a74de3bcb0e, type: 3}
       propertyPath: m_RootOrder
       value: 8
