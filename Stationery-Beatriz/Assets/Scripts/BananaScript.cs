@@ -21,7 +21,6 @@ public class BananaScript : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         Vector2 force = new Vector2(playerDirection * throwForce, throwForce);
-        Debug.Log(force);
         _rb.AddForce(force);
     }
 }
