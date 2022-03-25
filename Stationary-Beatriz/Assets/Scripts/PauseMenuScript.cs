@@ -42,6 +42,8 @@ public class PauseMenuScript : MonoBehaviour
     
     private void PauseGame()
     {
+        if (levelComplete) return;
+        
         GamePaused = true;
         _pauseMenu.SetActive(true);
         Time.timeScale = 0f;

@@ -11,6 +11,12 @@ public class PlayerScript : MonoBehaviour
     
     [SerializeField] 
     private float disguiseInvicibility;
+
+    [SerializeField] 
+    private GameObject banana;
+    
+    [SerializeField] 
+    private float bananaThrowForce;
     
     private bool _grounded = true;
     private Rigidbody2D _model;
@@ -42,6 +48,8 @@ public class PlayerScript : MonoBehaviour
         
         _hMove = Input.GetAxisRaw("Horizontal");
 
+        _animator.SetFloat("Move", Math.Abs(_hMove));
+
         if (_hMove < 0 && _previousMove >= 0)
         {
             TurnLeft();
@@ -50,8 +58,6 @@ public class PlayerScript : MonoBehaviour
         {
             TurnRight();
         }
-        
-        _animator.SetFloat("Move", Math.Abs(_hMove));
 
         if (Input.GetButtonDown("Jump") && _grounded == true)
         {
@@ -67,6 +73,12 @@ public class PlayerScript : MonoBehaviour
 
         if (_hMove != 0)
             _previousMove = _hMove;
+        
+        if (Input.GetButtonDown("Fire2"))
+        {
+            GameObject bananaInstance = Instantiate(banana, transform.position, transform.rotation);
+            bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce);
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)

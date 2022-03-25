@@ -13,6 +13,7 @@ TagManager:
   - Disguise
   - BottomCollider
   - Objective
+  - Banana
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - Draggable
   - Enemy
-  - 
+  - Throwable
   - 
   - 
   - 

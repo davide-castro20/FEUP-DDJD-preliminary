@@ -149,6 +149,8 @@ MonoBehaviour:
   speed: 3
   jumpSpeed: 350
   disguiseInvicibility: 0
+  banana: {fileID: 7350055493657717683, guid: 3be1abaab96743048b16c93724d04d18, type: 3}
+  bananaThrowForce: 10
 --- !u!95 &773045695616570285
 Animator:
   serializedVersion: 3
