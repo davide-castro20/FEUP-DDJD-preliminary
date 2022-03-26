@@ -81,8 +81,11 @@ public class PlayerScript : MonoBehaviour
         {
             if (GameObject.Find("Banana(Clone)") == null)
             {
+                Vector3 mouseLocation = Input.mousePosition;
                 GameObject bananaInstance = Instantiate(banana, transform.position, transform.rotation);
-                bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce);
+                Vector3 diff = transform.position - mouseLocation;
+                double angle = Math.Atan(diff.y / diff.x);
+                bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce, angle);
             }
         }
         if (Input.GetButtonDown("Fire1"))

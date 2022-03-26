@@ -18,10 +18,10 @@ public class BananaScript : MonoBehaviour
         
     }
 
-    public void StartBanana(int playerDirection, float throwForce)
+    public void StartBanana(int playerDirection, float throwForce,double angle)
     {
         _rb = GetComponent<Rigidbody2D>();
-        Vector2 force = new Vector2(playerDirection * throwForce, throwForce);
+        Vector2 force = new Vector2((int)(playerDirection * throwForce * Math.Cos(angle)), (int)(throwForce * Math.Sin(angle)));
         _rb.AddForce(force);
     }
 }
