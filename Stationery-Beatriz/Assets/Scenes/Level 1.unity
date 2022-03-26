@@ -2530,6 +2530,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 705843071956588470, guid: 4a3046c8771a51044bbb014ba6595b90, type: 3}
+      propertyPath: m_Color.g
+      value: 0.00000025431316
+      objectReference: {fileID: 0}
+    - target: {fileID: 705843071956588470, guid: 4a3046c8771a51044bbb014ba6595b90, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 705843071956588472, guid: 4a3046c8771a51044bbb014ba6595b90, type: 3}
       propertyPath: bridge
       value: 
@@ -3301,6 +3309,18 @@ PrefabInstance:
     - target: {fileID: 6863007569712108637, guid: 285e66f67817c7f439e28397edb53e74, type: 3}
       propertyPath: m_Name
       value: Pressure Plate
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206796981906657570, guid: 285e66f67817c7f439e28397edb53e74, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206796981906657570, guid: 285e66f67817c7f439e28397edb53e74, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206796981906657570, guid: 285e66f67817c7f439e28397edb53e74, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9206796981906657575, guid: 285e66f67817c7f439e28397edb53e74, type: 3}
       propertyPath: bridge
