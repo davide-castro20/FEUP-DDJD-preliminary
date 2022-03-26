@@ -23,13 +23,19 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene(scenes[0]);
     }
 
-    public void Options()
+    public void Controls()
     {
-        
+        SceneManager.LoadScene(scenes[1]);
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+    
+    public void MainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Main Menu");
     }
 }

@@ -252,6 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenes:
   - Level 1
+  - Controls
 --- !u!1001 &301670421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,7 +491,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4467464126822100133, guid: d4e5bdedbb72cb54b963406f4668a7c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Options
+      value: Controls
       objectReference: {fileID: 0}
     - target: {fileID: 4467464126822100133, guid: d4e5bdedbb72cb54b963406f4668a7c8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -502,11 +503,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4467464126822100135, guid: d4e5bdedbb72cb54b963406f4668a7c8, type: 3}
       propertyPath: m_Name
-      value: Options
+      value: Controls
       objectReference: {fileID: 0}
     - target: {fileID: 4467464127739851344, guid: d4e5bdedbb72cb54b963406f4668a7c8, type: 3}
       propertyPath: m_text
-      value: Options
+      value: Controls
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4e5bdedbb72cb54b963406f4668a7c8, type: 3}
@@ -887,7 +888,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.3882353, g: 0.3882353, b: 0.3882353, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
