@@ -29,4 +29,12 @@ public class CleanAreaScript : MonoBehaviour
             _janitorScript.CleanBanana(other.gameObject);
         }
     }
+    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Banana"))
+        {
+            _janitorScript.LeftBanana(other.gameObject);
+        }
+    }
 }

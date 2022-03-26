@@ -23,5 +23,9 @@ public class VoidScript : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerScript>().Kill();
         }
+        if (other.CompareTag("Banana"))
+        {
+            Destroy(GameObject.Find("Banana(Clone)"));
+        }
     }
 }

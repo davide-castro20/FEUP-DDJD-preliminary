@@ -114,13 +114,11 @@ public class PlayerScript : MonoBehaviour
     {
         _animator.SetBool("Disguised", true);
         _disguiseTime = duration;
-        Debug.Log("Disguised");
     }
 
     public void RemoveDisguise(bool invincibility)
     {
         _animator.SetBool("Disguised", false);
-        Debug.Log("Disguise Removed");
         if (invincibility)
             _disguiseTime = disguiseInvicibility;
     }

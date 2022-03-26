@@ -47,10 +47,11 @@ public class JanitorScript : MonoBehaviour
     {
         if (_bananaInArea)
         {
-            // TODO: janitor stops at banana for a few seconds and resumes walk
-            transform.position = Vector3.MoveTowards(transform.position, _banana.transform.position, 
+            Vector3 bananaPos = _banana.transform.position;
+            bananaPos.y = transform.position.y;
+            transform.position = Vector3.MoveTowards(transform.position, bananaPos, 
                 speed * 1.25f * Time.deltaTime);
-            if (transform.position == _banana.transform.position)
+            if (transform.position.x == _banana.transform.position.x)
             {
                 _bananaTime += Time.deltaTime;
                 if (_bananaTime >= 2)
@@ -108,5 +109,11 @@ public class JanitorScript : MonoBehaviour
     {
         _bananaInArea = true;
         _banana = banana;
+    }
+
+    public void LeftBanana(GameObject otherGameObject)
+    {
+        _bananaInArea = false;
+        _banana = null;
     }
 }

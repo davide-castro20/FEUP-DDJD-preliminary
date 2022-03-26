@@ -33,7 +33,7 @@ public class BottomColliderScript : MonoBehaviour
             _ps.ResetJump();
         }
     }
-    
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (_jumpReseters.Contains(other.gameObject.tag))
