@@ -16,6 +16,9 @@ public class PlayerScript : MonoBehaviour
     private GameObject banana;
     
     [SerializeField] 
+    private GameObject pencil;
+    
+    [SerializeField] 
     private float bananaThrowForce;
     
     private bool _grounded = true;
@@ -29,6 +32,8 @@ public class PlayerScript : MonoBehaviour
     private float _disguiseTime = 0;
     
     private SpriteRenderer _spriteRenderer;
+
+    private int ammo = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -38,9 +43,7 @@ public class PlayerScript : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    
-    
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -80,6 +83,17 @@ public class PlayerScript : MonoBehaviour
             {
                 GameObject bananaInstance = Instantiate(banana, transform.position, transform.rotation);
                 bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce);
+            }
+        }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (ammo != 0)
+            {
+                int direction = _previousMove < 0 ? -1 : 1;
+                GameObject pencilInstance = Instantiate(pencil, transform.position, transform.rotation);
+                pencilInstance.GetComponent<ProjectileScript>().setEnemyProjectile(false);
+                pencilInstance.GetComponent<ProjectileScript>().StartProjectile(10 * direction,2);
+                ammo--;
             }
         }
     }
@@ -136,5 +150,10 @@ public class PlayerScript : MonoBehaviour
     private void TurnRight()
     {
         _spriteRenderer.flipX = false;
+    }
+
+    public void AddAmmo(int i)
+    {
+        this.ammo++;
     }
 }

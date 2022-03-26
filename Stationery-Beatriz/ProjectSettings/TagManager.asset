@@ -17,6 +17,9 @@ TagManager:
   - CleanArea
   - Void
   - BackCollider
+  - Enemy
+  - Throwable
+  - Ammo
   layers:
   - Default
   - TransparentFX

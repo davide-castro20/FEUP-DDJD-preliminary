@@ -30,7 +30,9 @@ public class PencilThrowerScript : MonoBehaviour
         if (_currentTime <= 0)
         {
             GameObject gameObject = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
-            gameObject.GetComponent<ProjectileScript>().StartProjectile(range * direction, speed);
+            ProjectileScript ps = gameObject.GetComponent<ProjectileScript>();
+            ps.StartProjectile(range * direction, speed);
+            ps.setEnemyProjectile(true);
             _currentTime = throwRate;
             _animator.SetTrigger("Throw");
         }
@@ -39,7 +41,7 @@ public class PencilThrowerScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BottomCollider"))
         {
             if (_ps.IsDisguised())
             {
@@ -50,5 +52,7 @@ public class PencilThrowerScript : MonoBehaviour
                 _ps.Kill();
             }
         }
+
+        
     }
 }

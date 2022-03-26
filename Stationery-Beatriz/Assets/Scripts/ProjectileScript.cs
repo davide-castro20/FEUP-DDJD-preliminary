@@ -13,7 +13,9 @@ public class ProjectileScript : MonoBehaviour
     private bool _isInitialized = false;
     private Vector3 _rotationVector;
     
-    private PlayerScript _ps; 
+    private PlayerScript _ps;
+    private bool _initiated = false;
+    public bool enemyProjectile;
     
     // Start is called before the first frame update
     void Start()
@@ -54,16 +56,38 @@ public class ProjectileScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        Debug.Log(other.tag);
+
+        if (_initiated)
         {
-            if (_ps.IsDisguised())
+            if (enemyProjectile && other.gameObject.CompareTag("Player"))
             {
-                _ps.RemoveDisguise(true);
+                if (_ps.IsDisguised())
+                {
+                    _ps.RemoveDisguise(true);
+                }
+                else
+                {
+                    _ps.Kill();
+                }
             }
-            else
+            // Player sent projectile
+            else if (!enemyProjectile && other.gameObject.CompareTag("Enemy"))
             {
-                _ps.Kill();
+                Destroy(other.gameObject.transform.parent.gameObject);
+                Destroy(this.gameObject);
             }
         }
+        
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void setEnemyProjectile(bool b)
+    {
+        enemyProjectile = b;
+        _initiated = true;
     }
 }
