@@ -76,8 +76,11 @@ public class PlayerScript : MonoBehaviour
         
         if (Input.GetButtonDown("Fire2"))
         {
-            GameObject bananaInstance = Instantiate(banana, transform.position, transform.rotation);
-            bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce);
+            if (GameObject.Find("Banana(Clone)") == null)
+            {
+                GameObject bananaInstance = Instantiate(banana, transform.position, transform.rotation);
+                bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce);
+            }
         }
     }
 

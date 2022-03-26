@@ -18,6 +18,7 @@ public class JanitorScript : MonoBehaviour
     private CleanAreaScript areaScript;
     private bool _bananaInArea;
     private GameObject _banana;
+    private float _bananaTime;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,17 @@ public class JanitorScript : MonoBehaviour
             // TODO: janitor stops at banana for a few seconds and resumes walk
             transform.position = Vector3.MoveTowards(transform.position, _banana.transform.position, 
                 speed * 1.25f * Time.deltaTime);
+            if (transform.position == _banana.transform.position)
+            {
+                _bananaTime += Time.deltaTime;
+                if (_bananaTime >= 2)
+                {
+                    _bananaInArea = false;
+                    Destroy(_banana);
+                    _bananaTime = 0;
+                }
+            }
+
             return;
         }
         
