@@ -6,6 +6,7 @@ using UnityEngine;
 public class BananaScript : MonoBehaviour
 {
     private Rigidbody2D _rb;
+    private float _timeToLive = 10;
     
     // Start is called before the first frame update
     void Start()
@@ -15,7 +16,11 @@ public class BananaScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        _timeToLive -= Time.deltaTime;
+        if (_timeToLive <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void StartBanana(int playerDirection, float throwForce,double angle)
