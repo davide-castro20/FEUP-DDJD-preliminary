@@ -20,6 +20,8 @@ TagManager:
   - Enemy
   - Throwable
   - Ammo
+  - HotbarSlot
+  - Hotbar
   layers:
   - Default
   - TransparentFX
@@ -56,12 +58,6 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Door
-    uniqueID: 4093099177
-    locked: 0
-  - name: Draggable
-    uniqueID: 3062037481
     locked: 0
   - name: Player
     uniqueID: 2958250483

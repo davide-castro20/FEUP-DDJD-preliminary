@@ -33,6 +33,8 @@ public class PlayerScript : MonoBehaviour
     
     private SpriteRenderer _spriteRenderer;
 
+    private HotbarScript _hotbarScript;
+
     private int ammo = 0;
     
     // Start is called before the first frame update
@@ -97,6 +99,7 @@ public class PlayerScript : MonoBehaviour
                 pencilInstance.GetComponent<ProjectileScript>().setEnemyProjectile(false);
                 pencilInstance.GetComponent<ProjectileScript>().StartProjectile(10 * direction,2);
                 ammo--;
+                _hotbarScript.UpdatePencilAmmo(ammo.ToString());
             }
         }
     }
@@ -157,6 +160,7 @@ public class PlayerScript : MonoBehaviour
 
     public void AddAmmo(int i)
     {
-        this.ammo++;
+        ammo++;
+        _hotbarScript.UpdatePencilAmmo(ammo.ToString());
     }
 }
