@@ -52,7 +52,5 @@ public class PencilThrowerScript : MonoBehaviour
                 _ps.Kill();
             }
         }
-
-        
     }
 }
