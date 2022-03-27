@@ -29,14 +29,17 @@ public class DoorProfScript : MonoBehaviour
             Vector3 playerPos = _player.transform.position;
             if (playerPos.x < _thisPos.x + _visionRangeRight && playerPos.x > _thisPos.x - _visionRangeLeft)
             {
-                PlayerScript _ps = _player.GetComponent<PlayerScript>();
-                if (_ps.IsDisguised())
+                if (Math.Abs(playerPos.y - _thisPos.y) < 1)
                 {
-                    _ps.RemoveDisguise(true);
-                }
-                else
-                {
-                    _ps.Kill();
+                    PlayerScript _ps = _player.GetComponent<PlayerScript>();
+                    if (_ps.IsDisguised())
+                    {
+                        _ps.RemoveDisguise(true);
+                    }
+                    else
+                    {
+                        _ps.Kill();
+                    }
                 }
             }
         }
@@ -46,5 +49,11 @@ public class DoorProfScript : MonoBehaviour
     {
         if(col.CompareTag("Box"))
             _anim.SetBool("NotBlocked", false);
+    }
+    
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if(col.CompareTag("Box"))
+            _anim.SetBool("NotBlocked", true);
     }
 }
