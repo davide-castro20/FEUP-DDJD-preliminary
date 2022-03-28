@@ -20,6 +20,8 @@ public class JanitorScript : MonoBehaviour
     
     [SerializeField]
     private CleanAreaScript areaScript;
+
+    [SerializeField] private GameObject detectionWarning;
     private bool _bananaInArea;
     private GameObject _banana;
     private float _bananaTime;
@@ -77,6 +79,7 @@ public class JanitorScript : MonoBehaviour
                     _bananaInArea = false;
                     _bananaTime = 0;
                     _animator.SetBool("cleaning", false);
+                    detectionWarning.SetActive(false);
                     Destroy(_banana);
                 }
             }
@@ -136,6 +139,7 @@ public class JanitorScript : MonoBehaviour
     {
         _bananaInArea = true;
         _banana = banana;
+        detectionWarning.SetActive(true);
     }
 
     public void LeftBanana()
