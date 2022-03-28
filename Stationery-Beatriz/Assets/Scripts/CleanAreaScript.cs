@@ -34,7 +34,7 @@ public class CleanAreaScript : MonoBehaviour
     {
         if (other.CompareTag("Banana"))
         {
-            _janitorScript.LeftBanana(other.gameObject);
+            _janitorScript.LeftBanana();
         }
     }
 }

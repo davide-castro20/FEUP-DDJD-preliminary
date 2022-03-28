@@ -13,6 +13,10 @@ public class JanitorScript : MonoBehaviour
     private Vector3 _currentTarget;
     private PlayerScript _ps;
     private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
+
+    [SerializeField] 
+    private float bananaPickupTime = 2f;
     
     [SerializeField]
     private CleanAreaScript areaScript;
@@ -29,15 +33,18 @@ public class JanitorScript : MonoBehaviour
         
         _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
 
         _bananaInArea = false;
         
         if (direction < 0)
         {
+            _currentTarget = _leftPos;
             TurnLeft();
         }
         else
         {
+            _currentTarget = _rightPos;
             TurnRight();
         }
     }
@@ -51,27 +58,49 @@ public class JanitorScript : MonoBehaviour
             bananaPos.y = transform.position.y;
             transform.position = Vector3.MoveTowards(transform.position, bananaPos, 
                 speed * 1.25f * Time.deltaTime);
+
+            if (bananaPos.x - transform.position.x > 0)
+            {
+                TurnRight();
+            }
+            else
+            {
+                TurnLeft();
+            }
+            
             if (transform.position.x == _banana.transform.position.x)
             {
+                _animator.SetBool("cleaning", true);
                 _bananaTime += Time.deltaTime;
-                if (_bananaTime >= 2)
+                if (_bananaTime >= bananaPickupTime)
                 {
                     _bananaInArea = false;
-                    Destroy(_banana);
                     _bananaTime = 0;
+                    _animator.SetBool("cleaning", false);
+                    Destroy(_banana);
                 }
             }
 
             return;
         }
-        
-        if (transform.position == _rightPos)
+
+        if (_currentTarget.x > transform.position.x)
+        {
+            TurnRight();
+        }
+        else
         {
             TurnLeft();
+        }
 
+        if (transform.position == _rightPos)
+        {
+            _currentTarget = _leftPos;
+            TurnLeft();
         }
         else if (transform.position == _leftPos)
         {
+            _currentTarget = _rightPos;
             TurnRight();
         }
 
@@ -95,13 +124,11 @@ public class JanitorScript : MonoBehaviour
 
     private void TurnLeft()
     {
-        _currentTarget = _leftPos;
         _spriteRenderer.flipX = true;
     }
 
     private void TurnRight()
     {
-        _currentTarget = _rightPos;
         _spriteRenderer.flipX = false;
     }
 
@@ -111,7 +138,7 @@ public class JanitorScript : MonoBehaviour
         _banana = banana;
     }
 
-    public void LeftBanana(GameObject otherGameObject)
+    public void LeftBanana()
     {
         _bananaInArea = false;
         _banana = null;

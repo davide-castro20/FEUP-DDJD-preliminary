@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 369097209614421798}
   - component: {fileID: 5594689059574605590}
   - component: {fileID: 4002245549796942391}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6907447160374525684}
   - component: {fileID: 4019558947815826859}
   - component: {fileID: 4096132800148253221}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Janitor
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -258,6 +258,7 @@ MonoBehaviour:
   rightOffset: 2
   direction: -1
   speed: 1
+  _bananaPickupTime: 2
   areaScript: {fileID: 5178912762783238353}
 --- !u!1 &3181804539258601741
 GameObject:

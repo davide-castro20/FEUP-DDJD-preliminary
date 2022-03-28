@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 public class PlayerScript : MonoBehaviour
@@ -9,8 +10,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     private float jumpSpeed;
     
-    [SerializeField] 
-    private float disguiseInvicibility;
+    [FormerlySerializedAs("disguiseInvicibility")] [SerializeField] 
+    private float disguiseInvincibility;
+
+    private DisguiseBar _disguiseBar;
 
     [SerializeField] 
     private GameObject banana;
@@ -44,6 +47,8 @@ public class PlayerScript : MonoBehaviour
         _spawnPoint = GameObject.FindGameObjectWithTag("Spawn").transform.position;
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _hotbarScript = GameObject.FindGameObjectWithTag("Hotbar").GetComponent<HotbarScript>();
+        _disguiseBar = GameObject.Find("PlayerDisguiseBar").GetComponent<DisguiseBar>();
     }
 
     // Update is called once per frame
@@ -74,6 +79,8 @@ public class PlayerScript : MonoBehaviour
         {
             if ((_disguiseTime -= Time.deltaTime) < 0)
                 RemoveDisguise(false);
+
+            _disguiseBar.SetProgress(_disguiseTime);
         }
 
         if (_hMove != 0)
@@ -134,13 +141,16 @@ public class PlayerScript : MonoBehaviour
     {
         _animator.SetBool("Disguised", true);
         _disguiseTime = duration;
+        _disguiseBar.ActivateDisguise(duration);
     }
 
     public void RemoveDisguise(bool invincibility)
     {
         _animator.SetBool("Disguised", false);
         if (invincibility)
-            _disguiseTime = disguiseInvicibility;
+            _disguiseTime = disguiseInvincibility;
+        
+        _disguiseBar.DeactivateDisguise();
     }
 
     public bool IsDisguised()

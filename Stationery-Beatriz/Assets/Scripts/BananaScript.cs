@@ -29,4 +29,13 @@ public class BananaScript : MonoBehaviour
         Vector2 force = new Vector2((int)(playerDirection * throwForce * Math.Cos(angle)), (int)(throwForce * Math.Sin(angle)));
         _rb.AddForce(force);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            Debug.Log("banana on ground");
+            _rb.velocity = Vector3.zero;
+        }
+    }
 }

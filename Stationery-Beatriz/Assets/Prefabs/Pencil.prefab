@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2017035703403039909}
   - component: {fileID: 2017035703403039910}
   - component: {fileID: 2017035703403039908}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pencil
   m_TagString: Ammo
   m_Icon: {fileID: 0}
