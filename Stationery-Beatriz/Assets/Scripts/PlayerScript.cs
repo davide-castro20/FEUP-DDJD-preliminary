@@ -13,6 +13,10 @@ public class PlayerScript : MonoBehaviour
     [FormerlySerializedAs("disguiseInvicibility")] [SerializeField] 
     private float disguiseInvincibility;
 
+    [SerializeField] private float blinkTime = 0.5f; // time, in seconds, per blink
+    private float _blinkTimer = 0;
+    private float _currentInvicible = 0;
+
     private DisguiseBar _disguiseBar;
 
     [SerializeField] 
@@ -81,6 +85,27 @@ public class PlayerScript : MonoBehaviour
                 RemoveDisguise(false);
 
             _disguiseBar.SetProgress(_disguiseTime);
+        } 
+        else if (_currentInvicible > 0)
+        {
+            _blinkTimer -= Time.deltaTime;
+            if ((_currentInvicible -= Time.deltaTime) <= 0)
+            {
+                _spriteRenderer.enabled = true;
+            }
+            else if (_blinkTimer <= 0)
+            {
+                _blinkTimer = blinkTime;
+                
+                if (_spriteRenderer.enabled)
+                {
+                    _spriteRenderer.enabled = false;
+                }
+                else
+                {
+                    _spriteRenderer.enabled = true;
+                }
+            }
         }
 
         if (_hMove != 0)
@@ -146,9 +171,13 @@ public class PlayerScript : MonoBehaviour
 
     public void RemoveDisguise(bool invincibility)
     {
+        _disguiseTime = 0;
         _animator.SetBool("Disguised", false);
+
         if (invincibility)
-            _disguiseTime = disguiseInvincibility;
+            _currentInvicible = disguiseInvincibility;
+        else
+            _currentInvicible = 0;
         
         _disguiseBar.DeactivateDisguise();
     }
@@ -156,6 +185,11 @@ public class PlayerScript : MonoBehaviour
     public bool IsDisguised()
     {
         return _disguiseTime > 0;
+    }
+
+    public bool IsInvincible()
+    {
+        return _currentInvicible > 0;
     }
     
     private void TurnLeft()

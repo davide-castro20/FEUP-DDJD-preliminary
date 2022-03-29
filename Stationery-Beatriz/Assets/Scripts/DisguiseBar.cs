@@ -45,6 +45,7 @@ public class DisguiseBar : MonoBehaviour
 
     public void DeactivateDisguise()
     {
+        _slider.value = 0;
         _slider.enabled = false;
         border.SetActive(false);
     }

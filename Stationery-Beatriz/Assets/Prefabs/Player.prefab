@@ -148,7 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   jumpSpeed: 350
-  disguiseInvicibility: 0
+  disguiseInvincibility: 2
+  blinkTime: 0.25
   banana: {fileID: 7350055493657717683, guid: 3be1abaab96743048b16c93724d04d18, type: 3}
   pencil: {fileID: 0}
   bananaThrowForce: 10

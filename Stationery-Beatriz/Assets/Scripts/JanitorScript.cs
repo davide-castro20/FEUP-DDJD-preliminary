@@ -114,7 +114,7 @@ public class JanitorScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BottomCollider"))
         {
-            if (_ps.IsDisguised())
+            if (_ps.IsDisguised() || _ps.IsInvincible())
             {
                 _ps.RemoveDisguise(true);
             }
