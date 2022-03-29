@@ -52,6 +52,7 @@ public class PlayerScript : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hotbarScript = GameObject.FindGameObjectWithTag("Hotbar").GetComponent<HotbarScript>();
+        _hotbarScript.UpdatePencilAmmo(ammo.ToString());
         _disguiseBar = GameObject.Find("PlayerDisguiseBar").GetComponent<DisguiseBar>();
     }
 
@@ -111,15 +112,17 @@ public class PlayerScript : MonoBehaviour
         if (_hMove != 0)
             _previousMove = _hMove;
         
-        if (Input.GetButtonDown("Fire2"))
+        if (GameObject.Find("Banana(Clone)") == null)
         {
-            if (GameObject.Find("Banana(Clone)") == null)
+            _hotbarScript.UpdateBananaCount("1");
+            if (Input.GetButtonDown("Fire2"))
             {
                 Vector3 mouseLocation = Input.mousePosition;
                 GameObject bananaInstance = Instantiate(banana, transform.position, transform.rotation);
                 Vector3 diff = transform.position - mouseLocation;
                 double angle = Math.Atan(diff.y / diff.x);
                 bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce, angle);
+                _hotbarScript.UpdateBananaCount("0");
             }
         }
         if (Input.GetButtonDown("Fire1"))

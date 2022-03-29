@@ -29,7 +29,11 @@ public class HotbarScript : MonoBehaviour
 
     public void UpdatePencilAmmo(String newAmmo)
     {
-        Debug.Log(pencils.GetComponents<TextMeshPro>());
         pencils.GetComponent<TextMeshProUGUI>().text = newAmmo;
+    }
+
+    public void UpdateBananaCount(string p0)
+    {
+        bananas.GetComponent<TextMeshProUGUI>().text = p0;
     }
 }
