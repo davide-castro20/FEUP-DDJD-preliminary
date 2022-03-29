@@ -3578,7 +3578,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2017035703403039911, guid: 627ca06c58e05d644a0bfe7c0b161d3a, type: 3}
       propertyPath: m_Name
-      value: Pencil
+      value: PencilAmmo
       objectReference: {fileID: 0}
     - target: {fileID: 2017035703403039915, guid: 627ca06c58e05d644a0bfe7c0b161d3a, type: 3}
       propertyPath: m_RootOrder
@@ -3847,7 +3847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5796386590726252181, guid: 2550375e4dafb704386e104b94f5fcfe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.37
+      value: -4.394
       objectReference: {fileID: 0}
     - target: {fileID: 5796386590726252181, guid: 2550375e4dafb704386e104b94f5fcfe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4387,7 +4387,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.6666667, y: 1}
+    oldSize: {x: 1, y: 1.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4468,8 +4468,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011930774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.077, y: 0.5909, z: 0}
-  m_LocalScale: {x: 1.1836574, y: 1.1836574, z: 1.1836574}
+  m_LocalPosition: {x: -2.5, y: 0.744, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
@@ -5724,3 +5724,60 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &8289179030487277407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699443, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083803532557699455, guid: e92facfb2354a124299513295c6ed0c2, type: 3}
+      propertyPath: m_Name
+      value: BananaAmmo
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e92facfb2354a124299513295c6ed0c2, type: 3}

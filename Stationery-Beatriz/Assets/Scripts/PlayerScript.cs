@@ -42,8 +42,12 @@ public class PlayerScript : MonoBehaviour
 
     private HotbarScript _hotbarScript;
 
-    private int ammo = 0;
+    [SerializeField]
+    private int bananaAmmo = 0;
+    [SerializeField]
+    private int pencilAmmo = 0;
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +56,7 @@ public class PlayerScript : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _hotbarScript = GameObject.FindGameObjectWithTag("Hotbar").GetComponent<HotbarScript>();
-        _hotbarScript.UpdatePencilAmmo(ammo.ToString());
+        _hotbarScript.UpdatePencilAmmo(pencilAmmo.ToString());
         _disguiseBar = GameObject.Find("PlayerDisguiseBar").GetComponent<DisguiseBar>();
     }
 
@@ -112,29 +116,30 @@ public class PlayerScript : MonoBehaviour
         if (_hMove != 0)
             _previousMove = _hMove;
         
-        if (GameObject.Find("Banana(Clone)") == null)
+        if (Input.GetButtonDown("Fire2"))
         {
-            _hotbarScript.UpdateBananaCount("1");
-            if (Input.GetButtonDown("Fire2"))
+            if (bananaAmmo > 0)
             {
                 Vector3 mouseLocation = Input.mousePosition;
                 GameObject bananaInstance = Instantiate(banana, transform.position, transform.rotation);
                 Vector3 diff = transform.position - mouseLocation;
                 double angle = Math.Atan(diff.y / diff.x);
                 bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce, angle);
-                _hotbarScript.UpdateBananaCount("0");
+                bananaAmmo--;
+                _hotbarScript.UpdateBananaCount(bananaAmmo.ToString());
             }
         }
+        
         if (Input.GetButtonDown("Fire1"))
         {
-            if (ammo != 0)
+            if (pencilAmmo > 0)
             {
                 int direction = _previousMove < 0 ? -1 : 1;
                 GameObject pencilInstance = Instantiate(pencil, transform.position, transform.rotation);
                 pencilInstance.GetComponent<ProjectileScript>().setEnemyProjectile(false);
                 pencilInstance.GetComponent<ProjectileScript>().StartProjectile(10 * direction,2);
-                ammo--;
-                _hotbarScript.UpdatePencilAmmo(ammo.ToString());
+                pencilAmmo--;
+                _hotbarScript.UpdatePencilAmmo(pencilAmmo.ToString());
             }
         }
     }
@@ -205,9 +210,33 @@ public class PlayerScript : MonoBehaviour
         _spriteRenderer.flipX = false;
     }
 
-    public void AddAmmo(int i)
+    public void AddAmmo(AmmoScript.Ammo ammoType, int i)
     {
-        ammo++;
-        _hotbarScript.UpdatePencilAmmo(ammo.ToString());
+        switch (ammoType)
+        {
+            case AmmoScript.Ammo.Banana:
+                bananaAmmo++;
+                _hotbarScript.UpdateBananaCount(bananaAmmo.ToString());
+                break;
+            case AmmoScript.Ammo.Pencil:
+                pencilAmmo++;
+                _hotbarScript.UpdatePencilAmmo(pencilAmmo.ToString());
+                break;
+            default:
+                break;
+        }
+    }
+
+    public int GetAmmo(AmmoScript.Ammo ammoType)
+    {
+        switch (ammoType)
+        {
+            case AmmoScript.Ammo.Banana:
+                return bananaAmmo;
+            case AmmoScript.Ammo.Pencil:
+                return pencilAmmo;
+            default:
+                return 0;
+        }
     }
 }

@@ -8,17 +8,15 @@ using UnityEngine.UI;
 
 public class HotbarScript : MonoBehaviour
 {
-
-    private float _counter = 1;
-    private float _currentTime;
-
     [SerializeField] private GameObject bananas;
     [SerializeField] private GameObject pencils;
         
     // Start is called before the first frame update
     void Start()
     {
-        _currentTime = _counter;
+        PlayerScript playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        bananas.GetComponent<TextMeshProUGUI>().text = playerScript.GetAmmo(AmmoScript.Ammo.Banana).ToString();
+        pencils.GetComponent<TextMeshProUGUI>().text = playerScript.GetAmmo(AmmoScript.Ammo.Pencil).ToString();
     }
 
     // Update is called once per frame

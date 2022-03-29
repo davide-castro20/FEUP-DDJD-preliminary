@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class AmmoScript : MonoBehaviour
 {
+    public enum Ammo
+    {
+        Banana,
+        Pencil
+    }
+
+    [SerializeField] 
+    private Ammo ammoType; 
+    
     private SpriteRenderer _spriteRenderer;
     private BoxCollider2D _boxCollider2D;
     
@@ -24,7 +33,7 @@ public class AmmoScript : MonoBehaviour
 
     private void ReloadPlayer(Collider2D player)
     {
-        player.gameObject.GetComponent<PlayerScript>().AddAmmo(1);
+        player.gameObject.GetComponent<PlayerScript>().AddAmmo(ammoType, 1);
         _spriteRenderer.enabled = false;
         _boxCollider2D.enabled = false;
     }

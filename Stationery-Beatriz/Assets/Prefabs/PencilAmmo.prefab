@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2017035703403039910}
   - component: {fileID: 2017035703403039908}
   m_Layer: 9
-  m_Name: Pencil
+  m_Name: PencilAmmo
   m_TagString: Ammo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aca2ba6152df1e4bb5f2904e9223775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammoType: 1
 --- !u!212 &2017035703403039908
 SpriteRenderer:
   m_ObjectHideFlags: 0
