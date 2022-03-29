@@ -7,6 +7,8 @@ public class DoorProfScript : MonoBehaviour
 {
     [SerializeField] private int _visionRangeRight;
     [SerializeField] private int _visionRangeLeft;
+    [SerializeField] private GameObject area;
+    
     private Animator _anim;
 
     private GameObject _player;
@@ -18,7 +20,12 @@ public class DoorProfScript : MonoBehaviour
         _anim = this.GetComponent<Animator>();
         _player = GameObject.FindGameObjectWithTag("Player");
         _thisPos = this.transform.position;
+        Transform areaTransform = area.transform;
+        
 
+        area.transform.localScale = new Vector3(_visionRangeLeft + _visionRangeRight, area.transform.localScale.y, 1);
+        var position = areaTransform.localPosition;
+        area.transform.localPosition = new Vector3(_visionRangeLeft - _visionRangeRight, position.y, position.z);
     }
 
     // Update is called once per frame
