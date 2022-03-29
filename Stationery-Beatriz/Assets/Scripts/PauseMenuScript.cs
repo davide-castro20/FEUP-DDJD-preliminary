@@ -37,6 +37,8 @@ public class PauseMenuScript : MonoBehaviour
         levelComplete = true;
         GamePaused = true;
         Time.timeScale = 0f;
+        var score = GameData.CalculateScore();
+        _levelCompleteMenu.GetComponent<CompleteMenuScript>().SetScore(score);
         _levelCompleteMenu.SetActive(true);
     }
     

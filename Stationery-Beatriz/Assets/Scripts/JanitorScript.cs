@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class JanitorScript : MonoBehaviour
@@ -114,11 +115,22 @@ public class JanitorScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BottomCollider"))
         {
-            if (_ps.IsDisguised() || _ps.IsInvincible())
+            if (_ps.IsDisguised())
             {
                 _ps.RemoveDisguise(true);
             }
-            else
+            else if (!_ps.IsInvincible())
+            {
+                _ps.Kill();
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BottomCollider"))
+        {
+            if (!_ps.IsInvincible() && !_ps.IsDisguised())
             {
                 _ps.Kill();
             }
