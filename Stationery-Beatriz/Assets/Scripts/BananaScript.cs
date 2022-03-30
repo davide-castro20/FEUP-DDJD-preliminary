@@ -34,7 +34,6 @@ public class BananaScript : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            Debug.Log("banana on ground");
             _rb.velocity = Vector3.zero;
         }
     }
