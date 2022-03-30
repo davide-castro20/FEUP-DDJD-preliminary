@@ -7,25 +7,26 @@ public class DoorProfScript : MonoBehaviour
 {
     [SerializeField] private int _visionRangeRight;
     [SerializeField] private int _visionRangeLeft;
-    [SerializeField] private GameObject area;
+    [SerializeField] private DoorProfArea area;
+    [SerializeField] private Animator eyeAnimator;
     
     private Animator _anim;
 
     private GameObject _player;
 
     private Vector3 _thisPos;
+
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         _anim = this.GetComponent<Animator>();
         _player = GameObject.FindGameObjectWithTag("Player");
         _thisPos = this.transform.position;
-        Transform areaTransform = area.transform;
         
-
-        area.transform.localScale = new Vector3(_visionRangeLeft + _visionRangeRight, area.transform.localScale.y, 1);
-        var position = areaTransform.localPosition;
-        area.transform.localPosition = new Vector3(_visionRangeLeft - _visionRangeRight, position.y, position.z);
+        area.SetArea(_visionRangeLeft, _visionRangeRight);
+        eyeAnimator.SetBool("EyeOpen", false);
     }
 
     // Update is called once per frame
@@ -33,6 +34,7 @@ public class DoorProfScript : MonoBehaviour
     {
         if (_anim.GetCurrentAnimatorStateInfo(0).IsName("DoorOpened"))
         {
+            eyeAnimator.SetBool("EyeOpen", true);
             Vector3 playerPos = _player.transform.position;
             if (playerPos.x < _thisPos.x + _visionRangeRight && playerPos.x > _thisPos.x - _visionRangeLeft)
             {
@@ -49,6 +51,10 @@ public class DoorProfScript : MonoBehaviour
                     }
                 }
             }
+        }
+        else
+        {
+            eyeAnimator.SetBool("EyeOpen", false);
         }
     }
 
