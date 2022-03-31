@@ -14,8 +14,8 @@ public class PlayerScript : MonoBehaviour
     private float disguiseInvincibility;
 
     [SerializeField] private float blinkTime = 0.5f; // time, in seconds, per blink
-    private float _blinkTimer = 0;
-    private float _currentInvicible = 0;
+    private float _blinkTimer;
+    private float _currentInvicible;
 
     private DisguiseBar _disguiseBar;
 
@@ -32,11 +32,12 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D _model;
     private Vector3 _spawnPoint;
     
-    private float _hMove = 0f;
-    private float _previousMove = 0f;
+    private float _hMove;
+    private bool _jump = false;
+    private float _previousMove;
 
     private Animator _animator;
-    private float _disguiseTime = 0;
+    private float _disguiseTime;
     
     private SpriteRenderer _spriteRenderer;
 
@@ -65,10 +66,11 @@ public class PlayerScript : MonoBehaviour
     {
         if (PauseMenuScript.GamePaused) return; // TODO: change this?
         
-        _hMove = Input.GetAxisRaw("Horizontal");
-
+        HandleInput();
+        
         _animator.SetFloat("Move", Math.Abs(_hMove));
 
+        
         if (_hMove < 0 && _previousMove >= 0)
         {
             TurnLeft();
@@ -78,7 +80,11 @@ public class PlayerScript : MonoBehaviour
             TurnRight();
         }
 
-        if (Input.GetButtonDown("Jump") && _grounded == true)
+        if (_hMove != 0)
+            _previousMove = _hMove;
+        
+        
+        if (_jump && _grounded)
         {
             _model.AddForce(new Vector2(_model.velocity.x, jumpSpeed));
             _grounded = false;
@@ -113,8 +119,6 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-        if (_hMove != 0)
-            _previousMove = _hMove;
         
         if (Input.GetButtonDown("Fire2"))
         {
@@ -151,6 +155,14 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         _model.velocity = new Vector2(_hMove * speed, _model.velocity.y);
+    }
+
+    void HandleInput()
+    {
+        _hMove = Input.GetAxisRaw("Horizontal");
+        if (Input.GetButtonDown("Jump"))
+            _jump = true;
+        else _jump = false;
     }
 
     public void ResetJump()
