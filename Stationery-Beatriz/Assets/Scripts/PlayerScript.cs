@@ -27,6 +27,8 @@ public class PlayerScript : MonoBehaviour
     
     [SerializeField] 
     private float bananaThrowForce;
+
+    private PauseMenuScript _menuScript;
     
     private bool _grounded = true;
     private Rigidbody2D _model;
@@ -59,6 +61,7 @@ public class PlayerScript : MonoBehaviour
         _hotbarScript = GameObject.FindGameObjectWithTag("Hotbar").GetComponent<HotbarScript>();
         _hotbarScript.UpdatePencilAmmo(pencilAmmo.ToString());
         _disguiseBar = GameObject.Find("PlayerDisguiseBar").GetComponent<DisguiseBar>();
+        _menuScript = GameObject.Find("HUD").GetComponent<PauseMenuScript>();
     }
 
     // Update is called once per frame
@@ -179,7 +182,8 @@ public class PlayerScript : MonoBehaviour
 
     public void Kill()
     {
-        transform.position = _spawnPoint;
+        _menuScript.DeathScreen();
+        // transform.position = _spawnPoint;
     }
 
     public void Disguise(float duration)

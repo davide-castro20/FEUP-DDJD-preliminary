@@ -59,6 +59,9 @@ TagManager:
   - name: Background
     uniqueID: 3028726191
     locked: 0
+  - name: Map
+    uniqueID: 1229354451
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -5,15 +6,17 @@ public class PauseMenuScript : MonoBehaviour
 {
     [SerializeField] private string mainMenuScene;
     public static bool GamePaused;
-    public bool levelComplete;
+    private bool levelComplete;
     private GameObject _pauseMenu;
     private GameObject _levelCompleteMenu;
+    private GameObject _deathMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         _pauseMenu = gameObject.transform.Find("PauseMenu").gameObject;
         _levelCompleteMenu = gameObject.transform.Find("CompleteMenu").gameObject;
+        _deathMenu = gameObject.transform.Find("DeathMenu").gameObject;
     }
 
     // Update is called once per frame
@@ -31,7 +34,13 @@ public class PauseMenuScript : MonoBehaviour
             }
         }
     }
-    
+
+    private void Awake()
+    {
+        Time.timeScale = 1;
+        GamePaused = false;
+    }
+
     public void LevelComplete()
     {
         levelComplete = true;
@@ -40,6 +49,13 @@ public class PauseMenuScript : MonoBehaviour
         var score = GameData.CalculateScore();
         _levelCompleteMenu.GetComponent<CompleteMenuScript>().SetScore(score);
         _levelCompleteMenu.SetActive(true);
+    }
+
+    public void DeathScreen()
+    {
+        GamePaused = true;
+        Time.timeScale = 0f;
+        _deathMenu.SetActive(true);
     }
     
     private void PauseGame()
@@ -56,6 +72,11 @@ public class PauseMenuScript : MonoBehaviour
         GamePaused = false;
         _pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+    }
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);    
     }
     
     public void ExitToMainMenu()
