@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,10 +25,15 @@ public class DisguiseBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void FixedUpdate()
+    {
         var abovePlayer = _player.transform.position;
         abovePlayer.y += offsetFromPlayer;
         
-        var wantedPos = Camera.main.WorldToScreenPoint (abovePlayer);
+        var wantedPos = Camera.main.WorldToScreenPoint(abovePlayer);
         transform.position = wantedPos;
     }
 
@@ -49,4 +55,6 @@ public class DisguiseBar : MonoBehaviour
         _slider.enabled = false;
         border.SetActive(false);
     }
+    
+    
 }
