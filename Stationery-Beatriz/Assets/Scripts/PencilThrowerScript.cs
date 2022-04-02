@@ -14,6 +14,8 @@ public class PencilThrowerScript : MonoBehaviour
     private Animator _animator;
 
     private float _currentTime = 0;
+
+    private bool _throwAnim = false;
     
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,14 @@ public class PencilThrowerScript : MonoBehaviour
     void Update()
     {
         _currentTime -= Time.deltaTime;
+
+        // start animation before actually throwing the pencil
+        if (_currentTime <= 0.5f && !_throwAnim)
+        {
+            _animator.SetTrigger("Throw");
+            _throwAnim = true;
+        }
+        
         if (_currentTime <= 0)
         {
             GameObject gameObject = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
@@ -34,7 +44,7 @@ public class PencilThrowerScript : MonoBehaviour
             ps.StartProjectile(range * direction, speed);
             ps.setEnemyProjectile(true);
             _currentTime = throwRate;
-            _animator.SetTrigger("Throw");
+            _throwAnim = false;
         }
         
     }
