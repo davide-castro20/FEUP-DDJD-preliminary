@@ -34,6 +34,7 @@ public class DoorProfScript : MonoBehaviour
     {
         if (_anim.GetCurrentAnimatorStateInfo(0).IsName("DoorOpened"))
         {
+            area.SetDanger(true);
             eyeAnimator.SetBool("EyeOpen", true);
             Vector3 playerPos = _player.transform.position;
             if (playerPos.x < _thisPos.x + _visionRangeRight && playerPos.x > _thisPos.x - _visionRangeLeft)
@@ -54,6 +55,7 @@ public class DoorProfScript : MonoBehaviour
         }
         else
         {
+            area.SetDanger(false);
             eyeAnimator.SetBool("EyeOpen", false);
         }
     }

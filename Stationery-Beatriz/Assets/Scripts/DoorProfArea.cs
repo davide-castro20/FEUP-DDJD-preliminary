@@ -7,12 +7,21 @@ public class DoorProfArea : MonoBehaviour
     [SerializeField] private GameObject areaLeft;
 
     [SerializeField] private GameObject areaRight;
-    
+
+    [SerializeField] private Color normalColor;
+    [SerializeField] private Color dangerColor;
+
+    private SpriteRenderer _areaLeftRenderer;
+    private SpriteRenderer _areaRightRenderer;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        _areaLeftRenderer = areaLeft.GetComponent<SpriteRenderer>();
+        _areaRightRenderer = areaRight.GetComponent<SpriteRenderer>();
+
+        _areaLeftRenderer.color = normalColor;
+        _areaRightRenderer.color = normalColor;
     }
 
     // Update is called once per frame
@@ -41,5 +50,19 @@ public class DoorProfArea : MonoBehaviour
         localPosition = transform1.localPosition;
         localPosition = new Vector3(rangeRight / 2.0f, localPosition.y, localPosition.z);
         transform2.localPosition = localPosition;
+    }
+
+    public void SetDanger(bool danger)
+    {
+        if (danger)
+        {
+            _areaLeftRenderer.color = dangerColor;
+            _areaRightRenderer.color = dangerColor;
+            return;
+        }
+        
+        _areaLeftRenderer.color = normalColor;
+        _areaRightRenderer.color = normalColor;
+
     }
 }
