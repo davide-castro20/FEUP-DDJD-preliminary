@@ -73,13 +73,13 @@ public class ProjectileScript : MonoBehaviour
             else if (!enemyProjectile && other.gameObject.CompareTag("Enemy"))
             {
                 Destroy(other.gameObject.transform.parent.gameObject);
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
         
         if (other.gameObject.CompareTag("Ground"))
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
