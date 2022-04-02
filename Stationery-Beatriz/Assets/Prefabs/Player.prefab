@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1336716813
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: 880fa272b0182514ca8c3b1dc7595349, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -150,9 +150,11 @@ MonoBehaviour:
   jumpSpeed: 350
   disguiseInvincibility: 2
   blinkTime: 0.25
-  banana: {fileID: 7350055493657717683, guid: 3be1abaab96743048b16c93724d04d18, type: 3}
-  pencil: {fileID: 0}
+  banana: {fileID: 8815711463914585927, guid: d90e5dfeda7483a459c9fd3c723efca6, type: 3}
+  pencil: {fileID: 5795666398370919764, guid: cb29a191cca089547ba6bbc7b41df0e1, type: 3}
   bananaThrowForce: 10
+  bananaAmmo: 0
+  pencilAmmo: 0
 --- !u!95 &773045695616570285
 Animator:
   serializedVersion: 3

@@ -52,7 +52,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BananaAnimation
-  m_Speed: 0.1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f2e16d5509d794d40964ba7669ed6f63, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3e573834295cc904896c3dfd776272db, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
