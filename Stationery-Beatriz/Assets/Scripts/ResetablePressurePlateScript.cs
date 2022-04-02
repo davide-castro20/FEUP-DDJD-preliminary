@@ -8,6 +8,7 @@ public class ResetablePressurePlateScript : PressurePlateScript
         {
             if (--nColisions == 0)
             {
+                _spriteRenderer.sprite = not_pressed;
                 _bs.Deactivate();
             }
         }
