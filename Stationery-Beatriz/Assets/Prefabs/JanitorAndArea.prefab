@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 6907447160374525684}
   - component: {fileID: 4019558947815826859}
   - component: {fileID: 4096132800148253221}
+  - component: {fileID: 3113921923461815249}
   m_Layer: 7
   m_Name: Janitor
   m_TagString: Enemy
@@ -262,6 +263,18 @@ MonoBehaviour:
   bananaPickupTime: 2
   areaScript: {fileID: 5178912762783238353}
   detectionWarning: {fileID: 7538579371365106629}
+--- !u!114 &3113921923461815249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3065139174072735287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d71172663621e409f5b143926ef5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3181804539258601741
 GameObject:
   m_ObjectHideFlags: 0

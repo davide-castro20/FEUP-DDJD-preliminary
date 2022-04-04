@@ -12,6 +12,8 @@ public class PencilThrowerScript : MonoBehaviour
     
     private PlayerScript _ps; 
     private Animator _animator;
+    private Enemy _enemyScript;
+
 
     private float _currentTime = 0;
 
@@ -23,30 +25,33 @@ public class PencilThrowerScript : MonoBehaviour
         _currentTime = throwRate;
         _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();
+        _enemyScript = GetComponent<Enemy>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        _currentTime -= Time.deltaTime;
+        if (!_enemyScript.getDead())
+        {
+            _currentTime -= Time.deltaTime;
 
-        // start animation before actually throwing the pencil
-        if (_currentTime <= 0.5f && !_throwAnim)
-        {
-            _animator.SetTrigger("Throw");
-            _throwAnim = true;
+            // start animation before actually throwing the pencil
+            if (_currentTime <= 0.5f && !_throwAnim)
+            {
+                _animator.SetTrigger("Throw");
+                _throwAnim = true;
+            }
+
+            if (_currentTime <= 0)
+            {
+                GameObject gameObject = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
+                ProjectileScript ps = gameObject.GetComponent<ProjectileScript>();
+                ps.StartProjectile(range * direction, speed);
+                ps.setEnemyProjectile(true);
+                _currentTime = throwRate;
+                _throwAnim = false;
+            }
         }
-        
-        if (_currentTime <= 0)
-        {
-            GameObject gameObject = Instantiate(projectile, transform.position, transform.rotation) as GameObject;
-            ProjectileScript ps = gameObject.GetComponent<ProjectileScript>();
-            ps.StartProjectile(range * direction, speed);
-            ps.setEnemyProjectile(true);
-            _currentTime = throwRate;
-            _throwAnim = false;
-        }
-        
     }
     
     private void OnTriggerEnter2D(Collider2D other)

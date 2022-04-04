@@ -15,6 +15,7 @@ public class JanitorScript : MonoBehaviour
     private PlayerScript _ps;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
+    private Enemy _enemyScript;
 
     [SerializeField] 
     private float bananaPickupTime = 2f;
@@ -37,6 +38,7 @@ public class JanitorScript : MonoBehaviour
         _ps = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
+        _enemyScript = GetComponent<Enemy>();
 
         _bananaInArea = false;
         
@@ -55,14 +57,42 @@ public class JanitorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_bananaInArea)
+        if (!_enemyScript.getDead())
         {
-            Vector3 bananaPos = _banana.transform.position;
-            bananaPos.y = transform.position.y;
-            transform.position = Vector3.MoveTowards(transform.position, bananaPos, 
-                speed * 1.25f * Time.deltaTime);
+            if (_bananaInArea)
+            {
+                Vector3 bananaPos = _banana.transform.position;
+                bananaPos.y = transform.position.y;
+                transform.position = Vector3.MoveTowards(transform.position, bananaPos,
+                    speed * 1.25f * Time.deltaTime);
 
-            if (bananaPos.x - transform.position.x > 0)
+                if (bananaPos.x - transform.position.x > 0)
+                {
+                    TurnRight();
+                }
+                else
+                {
+                    TurnLeft();
+                }
+
+                if (transform.position.x == _banana.transform.position.x)
+                {
+                    _animator.SetBool("cleaning", true);
+                    _bananaTime += Time.deltaTime;
+                    if (_bananaTime >= bananaPickupTime)
+                    {
+                        _bananaInArea = false;
+                        _bananaTime = 0;
+                        _animator.SetBool("cleaning", false);
+                        detectionWarning.SetActive(false);
+                        Destroy(_banana);
+                    }
+                }
+
+                return;
+            }
+
+            if (_currentTarget.x > transform.position.x)
             {
                 TurnRight();
             }
@@ -70,45 +100,20 @@ public class JanitorScript : MonoBehaviour
             {
                 TurnLeft();
             }
-            
-            if (transform.position.x == _banana.transform.position.x)
+
+            if (transform.position == _rightPos)
             {
-                _animator.SetBool("cleaning", true);
-                _bananaTime += Time.deltaTime;
-                if (_bananaTime >= bananaPickupTime)
-                {
-                    _bananaInArea = false;
-                    _bananaTime = 0;
-                    _animator.SetBool("cleaning", false);
-                    detectionWarning.SetActive(false);
-                    Destroy(_banana);
-                }
+                _currentTarget = _leftPos;
+                TurnLeft();
+            }
+            else if (transform.position == _leftPos)
+            {
+                _currentTarget = _rightPos;
+                TurnRight();
             }
 
-            return;
+            transform.position = Vector3.MoveTowards(transform.position, _currentTarget, speed * Time.deltaTime);
         }
-
-        if (_currentTarget.x > transform.position.x)
-        {
-            TurnRight();
-        }
-        else
-        {
-            TurnLeft();
-        }
-
-        if (transform.position == _rightPos)
-        {
-            _currentTarget = _leftPos;
-            TurnLeft();
-        }
-        else if (transform.position == _leftPos)
-        {
-            _currentTarget = _rightPos;
-            TurnRight();
-        }
-
-        transform.position = Vector3.MoveTowards(transform.position, _currentTarget, speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

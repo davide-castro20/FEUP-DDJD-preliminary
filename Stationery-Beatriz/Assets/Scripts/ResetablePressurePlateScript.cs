@@ -10,6 +10,7 @@ public class ResetablePressurePlateScript : PressurePlateScript
             {
                 _spriteRenderer.sprite = not_pressed;
                 _bs.Deactivate();
+                _isPressed = false;
             }
         }
     }

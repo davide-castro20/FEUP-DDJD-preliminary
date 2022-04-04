@@ -14,6 +14,8 @@ public class DisguiseScript : MonoBehaviour
     private float _countdown;
     private SpriteRenderer _spriteRenderer;
     private BoxCollider2D _boxCollider2D;
+    private AudioManager _audioManager;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,8 @@ public class DisguiseScript : MonoBehaviour
         _countdown = 0;
         _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        _audioManager = FindObjectOfType<AudioManager>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,6 +41,7 @@ public class DisguiseScript : MonoBehaviour
         _countdown = _timeToReappear;
         _spriteRenderer.enabled = false;
         _boxCollider2D.enabled = false;
+        _audioManager.PlaySound("PickUp");
     }
 
     // Update is called once per frame

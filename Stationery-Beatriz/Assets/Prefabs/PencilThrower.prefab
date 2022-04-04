@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1083799584596109828}
   - component: {fileID: 1083799584596109829}
   - component: {fileID: 1083799584596109881}
+  - component: {fileID: 6158029983659849063}
   m_Layer: 0
   m_Name: PencilThrower
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 412174775
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6803038202961677415, guid: 2d86fe2ca5bb2a544bd714d5fd098efc, type: 3}
+  m_Sprite: {fileID: 2724474728659286194, guid: 1800af7099fc63e4c9aba74546e1f0f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,10 +145,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwRate: 2
-  projectile: {fileID: 5495712804220699113, guid: 84300ac33ec64814991593ab958e5a78, type: 3}
+  projectile: {fileID: 5795666398370919764, guid: cb29a191cca089547ba6bbc7b41df0e1, type: 3}
   direction: -1
   range: 4
   speed: 2
+--- !u!114 &6158029983659849063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083799584596109830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d71172663621e409f5b143926ef5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8039385373505965622
 GameObject:
   m_ObjectHideFlags: 0

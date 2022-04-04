@@ -14,13 +14,15 @@ public class PressurePlateScript : MonoBehaviour
     
     protected SpriteRenderer _spriteRenderer;
 
-    
+    protected bool _isPressed = false;
     protected BridgeScript _bs;
     
     [SerializeField] 
     protected List<String> _plateReseters;
 
     protected int nColisions = 0;
+    
+    private AudioManager _audioManager;
 
 
     // Start is called before the first frame update
@@ -29,6 +31,8 @@ public class PressurePlateScript : MonoBehaviour
         _bs = bridge.GetComponent<BridgeScript>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.sprite = not_pressed;
+        _audioManager = FindObjectOfType<AudioManager>();
+
     }
 
     // Update is called once per frame
@@ -41,9 +45,14 @@ public class PressurePlateScript : MonoBehaviour
     {
         if (_plateReseters.Contains(col.gameObject.tag))
         {
-            _spriteRenderer.sprite = pressed;
-            _bs.Activate();
             nColisions++;
+            if (!_isPressed)
+            {
+                _spriteRenderer.sprite = pressed;
+                _bs.Activate();
+                _audioManager.PlaySound("PressPlate");
+                _isPressed = true;
+            }
         }
     }
 }
