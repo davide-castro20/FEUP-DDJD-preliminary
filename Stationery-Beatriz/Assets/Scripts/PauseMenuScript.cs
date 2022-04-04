@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 public class PauseMenuScript : MonoBehaviour
 {
     [SerializeField] private string mainMenuScene;
+    private AudioManager _audioManager;
     public static bool GamePaused;
     private bool levelComplete;
     private GameObject _pauseMenu;
     private GameObject _levelCompleteMenu;
     private GameObject _deathMenu;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        _audioManager = FindObjectOfType<AudioManager>();
         _pauseMenu = gameObject.transform.Find("PauseMenu").gameObject;
         _levelCompleteMenu = gameObject.transform.Find("CompleteMenu").gameObject;
         _deathMenu = gameObject.transform.Find("DeathMenu").gameObject;
@@ -56,6 +59,9 @@ public class PauseMenuScript : MonoBehaviour
         GamePaused = true;
         Time.timeScale = 0f;
         _deathMenu.SetActive(true);
+        
+        _audioManager.StopSound("Theme");
+        _audioManager.PlaySound("DeathScreen");
     }
     
     private void PauseGame()

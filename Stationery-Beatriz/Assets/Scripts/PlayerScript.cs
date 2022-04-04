@@ -42,6 +42,7 @@ public class PlayerScript : MonoBehaviour
     private float _disguiseTime;
     
     private SpriteRenderer _spriteRenderer;
+    private AudioManager _audioManager;
 
     private HotbarScript _hotbarScript;
 
@@ -62,6 +63,7 @@ public class PlayerScript : MonoBehaviour
         _hotbarScript.UpdatePencilAmmo(pencilAmmo.ToString());
         _disguiseBar = GameObject.Find("PlayerDisguiseBar").GetComponent<DisguiseBar>();
         _menuScript = GameObject.Find("HUD").GetComponent<PauseMenuScript>();
+        _audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -91,6 +93,7 @@ public class PlayerScript : MonoBehaviour
         {
             _model.AddForce(new Vector2(_model.velocity.x, jumpSpeed));
             _grounded = false;
+            _audioManager.PlaySound("PlayerJump");
         }
 
         if (_disguiseTime > 0)

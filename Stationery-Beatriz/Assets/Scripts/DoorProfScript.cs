@@ -32,6 +32,8 @@ public class DoorProfScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenuScript.GamePaused) return;
+        
         if (_anim.GetCurrentAnimatorStateInfo(0).IsName("DoorOpened"))
         {
             area.SetDanger(true);
