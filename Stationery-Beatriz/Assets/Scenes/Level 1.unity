@@ -952,10 +952,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundEffects:
+  - name: Theme
+    audioClip: {fileID: 8300000, guid: 76789375ad271b749a40d479a30f340d, type: 3}
+    volume: 0.2
+    source: {fileID: 0}
+    loop: 1
+  - name: DeathScreen
+    audioClip: {fileID: 8300000, guid: 99a107cafb067a04a8274597938cba33, type: 3}
+    volume: 0.7
+    source: {fileID: 0}
+    loop: 0
   - name: PlayerJump
     audioClip: {fileID: 8300000, guid: f35d2190779680748be997b3a3b78b27, type: 3}
-    volume: 1
+    volume: 0.5
     source: {fileID: 0}
+    loop: 0
+  instance: {fileID: 0}
 --- !u!4 &497212427
 Transform:
   m_ObjectHideFlags: 0
