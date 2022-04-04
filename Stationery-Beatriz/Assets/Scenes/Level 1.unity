@@ -977,6 +977,16 @@ MonoBehaviour:
     volume: 0.5
     source: {fileID: 0}
     loop: 0
+  - name: OpenDoor
+    audioClip: {fileID: 8300000, guid: d0c7f74485b2a964095b75644f7fb3c0, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: CloseDoor
+    audioClip: {fileID: 8300000, guid: 3255ce1976f6dc2478f753318ad27e34, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
   instance: {fileID: 0}
 --- !u!4 &497212427
 Transform:

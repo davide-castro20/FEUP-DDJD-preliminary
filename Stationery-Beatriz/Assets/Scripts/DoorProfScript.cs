@@ -16,6 +16,7 @@ public class DoorProfScript : MonoBehaviour
 
     private Vector3 _thisPos;
 
+    private AudioManager _audioManager;
     
     
     // Start is called before the first frame update
@@ -27,6 +28,8 @@ public class DoorProfScript : MonoBehaviour
         
         area.SetArea(_visionRangeLeft, _visionRangeRight);
         eyeAnimator.SetBool("EyeOpen", false);
+
+        _audioManager = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -72,5 +75,15 @@ public class DoorProfScript : MonoBehaviour
     {
         if(col.CompareTag("Box"))
             _anim.SetBool("NotBlocked", true);
+    }
+
+    public void OpenDoor()
+    {
+        _audioManager.PlaySound("OpenDoor");
+    }
+    
+    public void CloseDoor()
+    {
+        _audioManager.PlaySound("CloseDoor");
     }
 }
