@@ -886,7 +886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6834693050356120655, guid: d0e1e86b33b125e4f853eb6d41487a8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.53
+      value: -4.57
       objectReference: {fileID: 0}
     - target: {fileID: 6834693050356120655, guid: d0e1e86b33b125e4f853eb6d41487a8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -964,6 +964,16 @@ MonoBehaviour:
     loop: 0
   - name: PlayerJump
     audioClip: {fileID: 8300000, guid: f35d2190779680748be997b3a3b78b27, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: PlayerThrow
+    audioClip: {fileID: 8300000, guid: a447029650e5ed743921bea70d708d3c, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: BoxDrag
+    audioClip: {fileID: 8300000, guid: f330f5b7b759a1e418d3d6b736a5127b, type: 3}
     volume: 0.5
     source: {fileID: 0}
     loop: 0
@@ -10722,11 +10732,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 773045695616570282, guid: e0d1c00b48bf01b48a6f47fb7461cbac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.51
+      value: -12.529
       objectReference: {fileID: 0}
     - target: {fileID: 773045695616570282, guid: e0d1c00b48bf01b48a6f47fb7461cbac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.39
+      value: -7.468
       objectReference: {fileID: 0}
     - target: {fileID: 773045695616570282, guid: e0d1c00b48bf01b48a6f47fb7461cbac, type: 3}
       propertyPath: m_LocalPosition.z
@@ -13054,11 +13064,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6834693050356120655, guid: d0e1e86b33b125e4f853eb6d41487a8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.53
+      value: 12.49
       objectReference: {fileID: 0}
     - target: {fileID: 6834693050356120655, guid: d0e1e86b33b125e4f853eb6d41487a8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.54
+      value: -4.59
       objectReference: {fileID: 0}
     - target: {fileID: 6834693050356120655, guid: d0e1e86b33b125e4f853eb6d41487a8e, type: 3}
       propertyPath: m_LocalPosition.z

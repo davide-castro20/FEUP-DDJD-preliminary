@@ -60,6 +60,7 @@ public class PauseMenuScript : MonoBehaviour
         Time.timeScale = 0f;
         _deathMenu.SetActive(true);
         
+        _audioManager.StopAllSounds();
         _audioManager.StopSound("Theme");
         _audioManager.PlaySound("DeathScreen");
     }

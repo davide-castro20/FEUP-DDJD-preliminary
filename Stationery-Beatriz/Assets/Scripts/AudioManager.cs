@@ -48,6 +48,25 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    public void PlaySoundLoop(string clipName)
+    {
+        SoundEffect s = Array.Find(_soundEffects, sound => sound.name == clipName);
+
+        if (s == null)
+        {
+            Debug.Log("Invalid audio clip name");
+            return;
+        }
+        
+        Debug.Log("Playing " + clipName);
+
+        if (!s.source.isPlaying)
+        {
+            s.source.loop = true;
+            s.source.Play();
+        }
+    }
+
     public void StopSound(string clipName)
     {
         SoundEffect s = Array.Find(_soundEffects, sound => sound.name == clipName);
@@ -59,5 +78,13 @@ public class AudioManager : MonoBehaviour
         }
         
         s.source.Stop();
+    }
+
+    public void StopAllSounds()
+    {
+        foreach (SoundEffect s in _soundEffects)
+        {
+            s.source.Stop();
+        }
     }
 }

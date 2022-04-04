@@ -137,6 +137,7 @@ public class PlayerScript : MonoBehaviour
                 bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce, angle);
                 bananaAmmo--;
                 _hotbarScript.UpdateBananaCount(bananaAmmo.ToString());
+                _audioManager.PlaySound("PlayerThrow");
             }
         }
         
@@ -150,6 +151,7 @@ public class PlayerScript : MonoBehaviour
                 pencilInstance.GetComponent<ProjectileScript>().StartProjectile(10 * direction,2);
                 pencilAmmo--;
                 _hotbarScript.UpdatePencilAmmo(pencilAmmo.ToString());
+                _audioManager.PlaySound("PlayerThrow");
             }
         }
     }
