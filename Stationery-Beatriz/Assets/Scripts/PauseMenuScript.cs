@@ -50,7 +50,12 @@ public class PauseMenuScript : MonoBehaviour
         GamePaused = true;
         Time.timeScale = 0f;
         var score = GameData.CalculateScore();
-        _levelCompleteMenu.GetComponent<CompleteMenuScript>().SetScore(score);
+        CompleteMenuScript cms = _levelCompleteMenu.GetComponent<CompleteMenuScript>();
+        cms.SetScore(score);
+        cms.SetDisguises(GameData.DisguiseUses);
+        cms.SetBananas(GameData.BananaUses);
+        cms.SetEnemies(GameData.EnemiesKilled);
+        cms.SetTime(GameData.TimePassed);
         _levelCompleteMenu.SetActive(true);
     }
 

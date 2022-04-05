@@ -72,6 +72,7 @@ public class ProjectileScript : MonoBehaviour
             // Player sent projectile
             else if (!enemyProjectile && other.gameObject.CompareTag("Enemy"))
             {
+                GameData.EnemiesKilled++;
                 other.gameObject.transform.parent.GetComponent<Enemy>().Kill();
                 Destroy(this.gameObject);
             }

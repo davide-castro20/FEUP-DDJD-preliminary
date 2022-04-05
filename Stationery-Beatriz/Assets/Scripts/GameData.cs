@@ -53,9 +53,24 @@ public class GameData : MonoBehaviour
 
     public static int CalculateScore()
     {
-        var score = 1000 - (DisguiseUses * 20) - (BananaUses * 10) - (EnemiesKilled * 2) - (TimePassed);
+        var score = 1000 - (DisguiseUses * 20) - (BananaUses * 10) + (EnemiesKilled * 2) - (TimePassed);
         if (score < 0)
             return 0;
         return (int)score;
+    }
+
+    public void GotBanana()
+    {
+        BananaUses++;
+    }
+    
+    public void GotDisguise()
+    {
+        DisguiseUses++;
+    }
+    
+    public void EnemyDefeated()
+    {
+        EnemiesKilled++;
     }
 }

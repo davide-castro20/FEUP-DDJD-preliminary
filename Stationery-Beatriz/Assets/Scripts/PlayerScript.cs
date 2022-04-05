@@ -136,6 +136,7 @@ public class PlayerScript : MonoBehaviour
                 double angle = Math.Atan(diff.y / diff.x);
                 bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce, angle);
                 bananaAmmo--;
+                GameData.BananaUses++;
                 _hotbarScript.UpdateBananaCount(bananaAmmo.ToString());
                 _audioManager.PlaySound("PlayerThrow");
             }

@@ -32,6 +32,7 @@ public class DisguiseScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             DisguisePlayer(other);
+            GameData.DisguiseUses++;
         }
     }
 
