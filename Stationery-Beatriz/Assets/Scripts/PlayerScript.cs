@@ -50,7 +50,11 @@ public class PlayerScript : MonoBehaviour
     private int bananaAmmo = 0;
     [SerializeField]
     private int pencilAmmo = 0;
-
+    [SerializeField] 
+    private int gliderAmmo = 0;
+    [SerializeField] 
+    private int rulerAmmo = 0;
+    
     private bool _gliding;
     [SerializeField] 
     private float glideVelocityX = 1f;
@@ -167,7 +171,7 @@ public class PlayerScript : MonoBehaviour
         if(_timeAttack >= 0)
             _timeAttack += Time.deltaTime;
         
-        if (Input.GetKeyDown(KeyCode.L) && !IsAttacking() && _grounded)
+        if (Input.GetKeyDown(KeyCode.L) && !IsAttacking() && _grounded && rulerAmmo > 0)
         {
             this._animator.SetBool("Attack",true);
             _timeAttack = 0;
@@ -183,7 +187,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetButtonDown("Fire3") && !IsAttacking()) // start gliding
         {
-            if (!_gliding)
+            if (!_gliding && !_grounded)
             {
                 StartGliding();
             }
@@ -333,6 +337,14 @@ public class PlayerScript : MonoBehaviour
                 pencilAmmo++;
                 _hotbarScript.UpdatePencilAmmo(pencilAmmo.ToString());
                 break;
+            case AmmoScript.Ammo.Glider:
+                gliderAmmo++;
+                _hotbarScript.UpdateGlider(true);
+                break;
+            case AmmoScript.Ammo.Ruler:
+                rulerAmmo = 2;
+                _hotbarScript.UpdateRuler(rulerAmmo);
+                break;
             default:
                 break;
         }
@@ -346,6 +358,10 @@ public class PlayerScript : MonoBehaviour
                 return bananaAmmo;
             case AmmoScript.Ammo.Pencil:
                 return pencilAmmo;
+            case AmmoScript.Ammo.Glider:
+                return gliderAmmo;
+            case AmmoScript.Ammo.Ruler:
+                return rulerAmmo;
             default:
                 return 0;
         }
@@ -353,13 +369,22 @@ public class PlayerScript : MonoBehaviour
 
     private void StartGliding()
     {
-        _gliding = true;
-        _animator.SetBool("Glide", true);
+        if (gliderAmmo > 0)
+        {
+            _gliding = true;
+            _animator.SetBool("Glide", true);
+        }
     }
 
     private void StopGliding()
     {
         _gliding = false;
         _animator.SetBool("Glide", false);
+    }
+
+    public void RemoveRulerAmmo()
+    {
+        rulerAmmo--;
+        _hotbarScript.UpdateRuler(rulerAmmo);
     }
 }

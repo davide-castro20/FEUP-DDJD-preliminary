@@ -47,7 +47,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
         
-        Debug.Log("Playing " + clipName);
         s.source.Play();
     }
 
@@ -61,8 +60,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
         
-        Debug.Log("Playing " + clipName);
-
         if (!s.source.isPlaying)
         {
             s.source.loop = true;

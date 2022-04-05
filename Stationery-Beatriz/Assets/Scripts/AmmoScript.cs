@@ -7,7 +7,9 @@ public class AmmoScript : MonoBehaviour
     public enum Ammo
     {
         Banana,
-        Pencil
+        Pencil,
+        Glider,
+        Ruler
     }
 
     [SerializeField] 

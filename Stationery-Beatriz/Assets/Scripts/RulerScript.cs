@@ -21,9 +21,12 @@ public class RulerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = other.gameObject.transform.parent.GetComponent<Enemy>();
-            
-            if(enemy != null) 
+
+            if (enemy != null)
+            {
                 enemy.Kill();
+                FindObjectOfType<PlayerScript>().RemoveRulerAmmo();
+            }
         }
     }
 }

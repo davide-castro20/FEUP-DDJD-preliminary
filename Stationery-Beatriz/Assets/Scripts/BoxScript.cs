@@ -39,17 +39,14 @@ public class BoxScript : MonoBehaviour
         else if (dragging)
         {
             dragging = false;
-            Debug.Log("Stopping box drag");
             _audioManager.StopSound("BoxDrag");
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("box collided with " + collision.gameObject);
         if (collision.collider.CompareTag("Ground"))
         {
-            Debug.Log("Box on ground");
             grounded = true;
         }
     }
@@ -58,7 +55,6 @@ public class BoxScript : MonoBehaviour
     {
         if (other.collider.CompareTag("Ground"))
         {
-            Debug.Log("Box off the ground");
             grounded = false;
         }
     }
