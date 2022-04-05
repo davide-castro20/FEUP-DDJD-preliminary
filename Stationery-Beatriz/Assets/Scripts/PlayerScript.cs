@@ -94,6 +94,7 @@ public class PlayerScript : MonoBehaviour
             _model.AddForce(new Vector2(_model.velocity.x, jumpSpeed));
             _grounded = false;
             _audioManager.PlaySound("PlayerJump");
+            _animator.SetBool("Jump", true);
         }
 
         if (_disguiseTime > 0)
@@ -178,6 +179,12 @@ public class PlayerScript : MonoBehaviour
     {
         // Debug.Log("Reset Jump");
         _grounded = true;
+        _animator.SetBool("Jump", false);
+    }
+
+    public void StopJumpAnim()
+    {
+        _animator.SetBool("Jump", false);
     }
 
     public void SetAirborne()

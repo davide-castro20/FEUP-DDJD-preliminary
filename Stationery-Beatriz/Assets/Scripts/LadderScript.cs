@@ -35,6 +35,8 @@ public class LadderScript : MonoBehaviour
             {
                 col.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
+
+            col.GetComponent<PlayerScript>().StopJumpAnim();
         }
     }
 }
