@@ -90,4 +90,30 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
         }
     }
+
+    public void PauseSound(string clipName)
+    {
+        SoundEffect s = Array.Find(_soundEffects, sound => sound.name == clipName);
+
+        if (s == null)
+        {
+            Debug.Log("Invalid audio clip name");
+            return;
+        }
+        
+        s.source.Pause();
+    }
+    
+    public void UnPauseSound(string clipName)
+    {
+        SoundEffect s = Array.Find(_soundEffects, sound => sound.name == clipName);
+
+        if (s == null)
+        {
+            Debug.Log("Invalid audio clip name");
+            return;
+        }
+        
+        s.source.UnPause();
+    }
 }

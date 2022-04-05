@@ -727,10 +727,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8614421304491489850, guid: abd6b5ae9a4b5b447a11f46bc2f8a73d, type: 3}
-      propertyPath: m_text
-      value: 'Total Score: '
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614421304491489850, guid: abd6b5ae9a4b5b447a11f46bc2f8a73d, type: 3}
       propertyPath: m_margin.x
       value: -55.65114
       objectReference: {fileID: 0}

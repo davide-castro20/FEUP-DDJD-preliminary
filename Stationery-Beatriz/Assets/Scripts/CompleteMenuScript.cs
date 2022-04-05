@@ -30,26 +30,26 @@ public class CompleteMenuScript : MonoBehaviour
 
     public void SetScore(int score)
     {
-        scoreText.text += "Score: " + score;
+        scoreText.text = score.ToString();
     }
 
     public void SetDisguises(int disguiseUses)
     {
-        disguiseText.text = "Disguises Used: " + disguiseUses + " x -20";
+        disguiseText.text = disguiseUses + " x -20";
     }
 
     public void SetBananas(int bananaUses)
     {
-        bananaText.text = "Bananas Used: " + bananaUses + " x -10";
+        bananaText.text = bananaUses + " x -10";
     }
 
     public void SetEnemies(int enemiesKilled)
     {
-        enemiesText.text = "Enemies Defeated: " + enemiesKilled + " x -2";
+        enemiesText.text = enemiesKilled + " x -2";
     }
 
     public void SetTime(float timePassed)
     {
-        timeText.text = "Time: " + (int)timePassed + " x -1";
+        timeText.text = (int)timePassed + " x -1";
     }
 }

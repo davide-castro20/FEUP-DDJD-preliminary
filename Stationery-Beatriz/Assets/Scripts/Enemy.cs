@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     public void Kill()
     {
         _dead = true;
+        GameData.EnemiesKilled++;
         _audioManager.PlaySound("Poof");
         _animator.Play("Death");
     }

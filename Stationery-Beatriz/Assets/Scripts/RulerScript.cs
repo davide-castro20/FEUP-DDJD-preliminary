@@ -20,8 +20,10 @@ public class RulerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            GameData.EnemiesKilled++;
-            other.gameObject.transform.parent.GetComponent<Enemy>().Kill();
+            Enemy enemy = other.gameObject.transform.parent.GetComponent<Enemy>();
+            
+            if(enemy != null) 
+                enemy.Kill();
         }
     }
 }

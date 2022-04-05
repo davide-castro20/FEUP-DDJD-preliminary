@@ -77,6 +77,8 @@ public class PauseMenuScript : MonoBehaviour
         GamePaused = true;
         _pauseMenu.SetActive(true);
         Time.timeScale = 0f;
+        
+        _audioManager.PauseSound("Theme");
     }
     
     public void ResumeGame()
@@ -84,6 +86,7 @@ public class PauseMenuScript : MonoBehaviour
         GamePaused = false;
         _pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        _audioManager.UnPauseSound("Theme");
     }
 
     public void ReloadLevel()
