@@ -155,6 +155,8 @@ MonoBehaviour:
   bananaThrowForce: 10
   bananaAmmo: 0
   pencilAmmo: 0
+  glideVelocityX: 2
+  glideVelocityYFactor: 2
 --- !u!95 &773045695616570285
 Animator:
   serializedVersion: 3

@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
     private PauseMenuScript _menuScript;
     
     private bool _grounded = true;
-    private Rigidbody2D _model;
+    private Rigidbody2D _rb;
     private Vector3 _spawnPoint;
     
     private float _hMove;
@@ -50,12 +50,18 @@ public class PlayerScript : MonoBehaviour
     private int bananaAmmo = 0;
     [SerializeField]
     private int pencilAmmo = 0;
+
+    private bool _gliding;
+    [SerializeField] 
+    private float glideVelocityX = 1f;
+    [SerializeField] 
+    private float glideVelocityYFactor = 2f;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        _model = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
         _spawnPoint = GameObject.FindGameObjectWithTag("Spawn").transform.position;
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -85,13 +91,12 @@ public class PlayerScript : MonoBehaviour
             TurnRight();
         }
 
-        if (_hMove != 0)
-            _previousMove = _hMove;
+        
         
         
         if (_jump && _grounded)
         {
-            _model.AddForce(new Vector2(_model.velocity.x, jumpSpeed));
+            _rb.AddForce(new Vector2(_rb.velocity.x, jumpSpeed));
             _grounded = false;
             _audioManager.PlaySound("PlayerJump");
             _animator.SetBool("Jump", true);
@@ -156,6 +161,22 @@ public class PlayerScript : MonoBehaviour
                 _audioManager.PlaySound("PlayerThrow");
             }
         }
+
+        if (Input.GetButtonDown("Fire3")) // start gliding
+        {
+            if (!_gliding)
+            {
+                StartGliding();
+            }
+        } 
+        else if (Input.GetButtonUp("Fire3")) // release button - stop gliding
+        {
+            if (_gliding)
+            {
+                StopGliding();
+            }
+        }
+        
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -164,11 +185,38 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        _model.velocity = new Vector2(_hMove * speed, _model.velocity.y);
+        var xVel = _hMove * speed;
+        var yVel = _rb.velocity.y;
+        
+        if (_gliding)
+        {
+            var moveGlide = _hMove != 0 ? _hMove : _previousMove;
+
+            if (moveGlide > 0)
+            {
+                xVel = glideVelocityX;
+            } 
+            else if (moveGlide < 0)
+            {
+                xVel = -glideVelocityX;
+            }
+            else
+            {
+                xVel = _previousMove;
+            }
+            
+            _rb.velocity = new Vector2(xVel, yVel / glideVelocityYFactor);
+            return;
+        }
+        
+        _rb.velocity = new Vector2(xVel, yVel);
     }
 
     void HandleInput()
     {
+        if (_hMove != 0)
+            _previousMove = _hMove;
+        
         _hMove = Input.GetAxisRaw("Horizontal");
         if (Input.GetButtonDown("Jump"))
             _jump = true;
@@ -179,7 +227,15 @@ public class PlayerScript : MonoBehaviour
     {
         // Debug.Log("Reset Jump");
         _grounded = true;
-        _animator.SetBool("Jump", false);
+        
+        if (_gliding)
+        {  
+            StopGliding();
+        }
+        else
+        {
+            _animator.SetBool("Jump", false);
+        }
     }
 
     public void StopJumpAnim()
@@ -267,5 +323,17 @@ public class PlayerScript : MonoBehaviour
             default:
                 return 0;
         }
+    }
+
+    private void StartGliding()
+    {
+        _gliding = true;
+        _animator.SetBool("Glide", true);
+    }
+
+    private void StopGliding()
+    {
+        _gliding = false;
+        _animator.SetBool("Glide", false);
     }
 }
