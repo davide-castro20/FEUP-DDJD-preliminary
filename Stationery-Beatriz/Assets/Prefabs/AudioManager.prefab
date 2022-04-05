@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2201624429895944951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2201624429895944949}
+  - component: {fileID: 2201624429895944948}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2201624429895944949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201624429895944951}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.482301, y: -4.109615, z: -151.19467}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2201624429895944948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201624429895944951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a65c078c28a2964a957a1cb97efe73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundEffects:
+  - name: MainMenuTheme
+    audioClip: {fileID: 8300000, guid: 0338e47a3c779584581b27bae2479e91, type: 3}
+    volume: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Theme
+    audioClip: {fileID: 8300000, guid: 76789375ad271b749a40d479a30f340d, type: 3}
+    volume: 0.2
+    source: {fileID: 0}
+    loop: 1
+  - name: DeathScreen
+    audioClip: {fileID: 8300000, guid: 99a107cafb067a04a8274597938cba33, type: 3}
+    volume: 0.7
+    source: {fileID: 0}
+    loop: 0
+  - name: PlayerJump
+    audioClip: {fileID: 8300000, guid: f35d2190779680748be997b3a3b78b27, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: PlayerThrow
+    audioClip: {fileID: 8300000, guid: a447029650e5ed743921bea70d708d3c, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: BoxDrag
+    audioClip: {fileID: 8300000, guid: f330f5b7b759a1e418d3d6b736a5127b, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: OpenDoor
+    audioClip: {fileID: 8300000, guid: d0c7f74485b2a964095b75644f7fb3c0, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: CloseDoor
+    audioClip: {fileID: 8300000, guid: 3255ce1976f6dc2478f753318ad27e34, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: PickUp
+    audioClip: {fileID: 8300000, guid: 95a6a0a6d1b9a4d4cb1c0dff6e6c1484, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    loop: 0
+  - name: PressPlate
+    audioClip: {fileID: 8300000, guid: 244fa94c13384704ab638f558590aa7f, type: 3}
+    volume: 0.8
+    source: {fileID: 0}
+    loop: 0
+  - name: Poof
+    audioClip: {fileID: 8300000, guid: f7bce052139fa7c4394796bf3ba7286b, type: 3}
+    volume: 1
+    source: {fileID: 0}
+    loop: 0
+  instance: {fileID: 0}

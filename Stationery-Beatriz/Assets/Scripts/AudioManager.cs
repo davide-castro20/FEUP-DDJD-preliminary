@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] 
+    private string _initialSound;
+    
     [SerializeField]
     private SoundEffect[] _soundEffects;
-
+    
     public AudioManager instance;
     
 
@@ -25,7 +28,7 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlaySound("Theme");
+        PlaySound(_initialSound);
     }
 
     // Update is called once per frame
