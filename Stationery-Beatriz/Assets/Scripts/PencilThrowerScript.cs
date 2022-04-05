@@ -56,7 +56,7 @@ public class PencilThrowerScript : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BottomCollider"))
+        if (!_enemyScript.getDead() && (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("BottomCollider")))
         {
             if (_ps.IsDisguised())
             {

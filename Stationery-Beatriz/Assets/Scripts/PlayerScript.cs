@@ -57,6 +57,11 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] 
     private float glideVelocityYFactor = 2f;
     
+    [FormerlySerializedAs("_ruler")] [SerializeField] 
+    private GameObject ruler;
+    private float _timeAttack = 0;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +99,7 @@ public class PlayerScript : MonoBehaviour
         
         
         
-        if (_jump && _grounded)
+        if (_jump && _grounded && !IsAttacking())
         {
             _rb.AddForce(new Vector2(_rb.velocity.x, jumpSpeed));
             _grounded = false;
@@ -132,15 +137,12 @@ public class PlayerScript : MonoBehaviour
         }
 
         
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             if (bananaAmmo > 0)
             {
-                Vector3 mouseLocation = Input.mousePosition;
                 GameObject bananaInstance = Instantiate(banana, transform.position, transform.rotation);
-                Vector3 diff = transform.position - mouseLocation;
-                double angle = Math.Atan(diff.y / diff.x);
-                bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce, angle);
+                bananaInstance.GetComponent<BananaScript>().StartBanana(_previousMove < 0 ? -1 : 1, bananaThrowForce);
                 bananaAmmo--;
                 GameData.BananaUses++;
                 _hotbarScript.UpdateBananaCount(bananaAmmo.ToString());
@@ -148,7 +150,7 @@ public class PlayerScript : MonoBehaviour
             }
         }
         
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown(KeyCode.K))
         {
             if (pencilAmmo > 0)
             {
@@ -162,7 +164,24 @@ public class PlayerScript : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire3")) // start gliding
+        if(_timeAttack >= 0)
+            _timeAttack += Time.deltaTime;
+        
+        if (Input.GetKeyDown(KeyCode.L) && !IsAttacking() && _grounded)
+        {
+            this._animator.SetBool("Attack",true);
+            _timeAttack = 0;
+           ruler.SetActive(true); 
+        }   
+
+        if (_timeAttack >= 1)
+        {
+            this._animator.SetBool("Attack", false);
+            ruler.SetActive(false);
+            _timeAttack = -1;
+        }
+
+        if (Input.GetButtonDown("Fire3") && !IsAttacking()) // start gliding
         {
             if (!_gliding)
             {
@@ -181,6 +200,11 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+    }
+
+    public bool IsAttacking()
+    {
+        return _timeAttack >= 0;
     }
 
     void FixedUpdate()
@@ -288,11 +312,13 @@ public class PlayerScript : MonoBehaviour
     private void TurnLeft()
     {
         _spriteRenderer.flipX = true;
+        ruler.transform.localScale = new Vector3(-1,1,1);
     }
 
     private void TurnRight()
     {
         _spriteRenderer.flipX = false;
+        ruler.transform.localScale = new Vector3(1,1,1);
     }
 
     public void AddAmmo(AmmoScript.Ammo ammoType, int i)
