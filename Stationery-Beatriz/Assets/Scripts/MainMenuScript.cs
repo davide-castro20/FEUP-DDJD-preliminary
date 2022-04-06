@@ -7,6 +7,7 @@ public class MainMenuScript : MonoBehaviour
     public List<string> scenes;
 
     [SerializeField] private GameObject controlsScreen;
+    [SerializeField] private GameObject levelSelector;
     
     private AudioManager _audioManager;
 
@@ -35,6 +36,16 @@ public class MainMenuScript : MonoBehaviour
     public void ExitControls()
     {
         controlsScreen.SetActive(false);
+    }
+
+    public void LevelSelector()
+    {
+        levelSelector.SetActive(true);
+    }
+    
+    public void ExitLevelSelector()
+    {
+        levelSelector.SetActive(false);
     }
 
     public void QuitGame()
