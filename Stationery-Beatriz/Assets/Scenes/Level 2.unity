@@ -12696,6 +12696,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5840019086283238617, guid: abd6b5ae9a4b5b447a11f46bc2f8a73d, type: 3}
+      propertyPath: ruler
+      value: 
+      objectReference: {fileID: 2078619932}
     - target: {fileID: 6315139177018341147, guid: abd6b5ae9a4b5b447a11f46bc2f8a73d, type: 3}
       propertyPath: m_margin.z
       value: -236.48112
@@ -58998,11 +59002,11 @@ PrefabInstance:
     - target: {fileID: 3862145669981197813, guid: d0c418237ed69ec43aaf22ebd43fa938, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[3].m_Data
       value: 
-      objectReference: {fileID: 21300000, guid: 4db3624324490214f882c31624c19413, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3862145669981197813, guid: d0c418237ed69ec43aaf22ebd43fa938, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[4].m_Data
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 4db3624324490214f882c31624c19413, type: 3}
     - target: {fileID: 3862145669981197813, guid: d0c418237ed69ec43aaf22ebd43fa938, type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.a
       value: 1
@@ -59357,11 +59361,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3862145669981197813, guid: d0c418237ed69ec43aaf22ebd43fa938, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[3].m_RefCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3862145669981197813, guid: d0c418237ed69ec43aaf22ebd43fa938, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[4].m_RefCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3862145669981197813, guid: d0c418237ed69ec43aaf22ebd43fa938, type: 3}
       propertyPath: m_Tiles.Array.data[0].second.m_AllTileFlags
@@ -59585,7 +59589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3862145669981197813, guid: d0c418237ed69ec43aaf22ebd43fa938, type: 3}
       propertyPath: m_Tiles.Array.data[0].second.m_TileSpriteIndex
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3862145669981197813, guid: d0c418237ed69ec43aaf22ebd43fa938, type: 3}
       propertyPath: m_Tiles.Array.data[1].second.m_TileSpriteIndex
@@ -60624,6 +60628,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2078619932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8705609856935810059, guid: abd6b5ae9a4b5b447a11f46bc2f8a73d, type: 3}
+  m_PrefabInstance: {fileID: 1582029443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2109852946
 PrefabInstance:
   m_ObjectHideFlags: 0
