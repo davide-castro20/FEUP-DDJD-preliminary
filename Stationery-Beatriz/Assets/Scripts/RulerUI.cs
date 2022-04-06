@@ -10,10 +10,10 @@ public class RulerUI : MonoBehaviour
 
     private Image _image;
     
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _image = GetComponent<Image>();
+        Debug.Log(_image);
     }
 
     // Update is called once per frame

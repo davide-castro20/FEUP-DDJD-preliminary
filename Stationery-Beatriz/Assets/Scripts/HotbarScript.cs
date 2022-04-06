@@ -11,7 +11,7 @@ public class HotbarScript : MonoBehaviour
     [SerializeField] private GameObject bananas;
     [SerializeField] private GameObject pencils;
     [SerializeField] private GameObject glider;
-    [SerializeField] private RulerUI ruler;
+    [SerializeField] private GameObject ruler;
     
     // Start is called before the first frame update
     void Start()
@@ -46,6 +46,6 @@ public class HotbarScript : MonoBehaviour
 
     public void UpdateRuler(int state)
     {
-        ruler.SetState(state);
+        ruler.GetComponent<RulerUI>().SetState(state);
     }
 }
