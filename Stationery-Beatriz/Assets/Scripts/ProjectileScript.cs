@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -53,7 +54,7 @@ public class ProjectileScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (_initiated)
@@ -78,7 +79,7 @@ public class ProjectileScript : MonoBehaviour
             }
         }
         
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))
         {
             Destroy(gameObject);
         }

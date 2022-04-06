@@ -3016,7 +3016,7 @@ MonoBehaviour:
   bananas: {fileID: 1559579995098753894}
   pencils: {fileID: 1731049953557573165}
   glider: {fileID: 4304752057226268834}
-  ruler: {fileID: 942060128987756707}
+  ruler: {fileID: 8705609856935810059}
 --- !u!114 &2146514522964083376
 MonoBehaviour:
   m_ObjectHideFlags: 0
