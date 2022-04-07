@@ -18,7 +18,9 @@
 
 To install this game, please access the following link:
 
-[Inserir link do itch.io]. After doing so, download the executable and run it.
+[https://davide-castro20.itch.io/stationery-beatriz-on-the-move?secret=rtLMuDDX0xqPHRq0INYSmqrYc](https://davide-castro20.itch.io/stationery-beatriz-on-the-move?secret=rtLMuDDX0xqPHRq0INYSmqrYc).
+
+After doing so, download the executable and run it.
 
 ## How To Play
 
