@@ -41,46 +41,28 @@ To install this game, please access the following link:
 - Deploy Glider: Shift;
 
 ### Enemies
-
-| Enemy Sprite | Description   |
-
+|Enemy Sprite| Description|
 |:---:|---|
-
-| ![Cleaning Lady Sprite](./images/cleaningLady.png)  | **Cleaning Lady:** Walks back and forth inside a designated area. If the player touches her, the player loses. The player can distract the cleaning lady by throwing a banana inside her cleaning area.  |   
-
-| ![Door Enemy Sprite](./images/doorProf.png)  | **Door Professor:** Peeks through the door from time to time to see if it can detect the player. If a box is pushed in front of the door, it will no longer open.
-
-|  
-
+|![Cleaning Lady Sprite](./images/cleaningLady.png)|**Cleaning Lady:** Walks back and forth inside a designated area. If the player touches her, the player loses. The player can distract the cleaning lady by throwing a banana inside her cleaning area.|
+| ![Door Enemy Sprite](./images/doorProf.png)  | **Door Professor:** Peeks through the door from time to time to see if it can detect the player. If a box is pushed in front of the door, it will no longer open.|
 | ![Pencil Thrower Sprite](./images/thrower.png)  | **Thrower:** Periodically throws pencils. These pencils travel until a wall/box is hit.| 
-
-
-
 ### Power Ups
 
 
 
 | Power Up Sprite | Description   |
-
 |:---:|---|
-
-| ![Disguise Sprite](./images/disguise.png)  | **Disguise:** Gives the player a disguise to not get caught for one time.  |   
-
+| ![Disguise Sprite](./images/disguise.png)  | **Disguise:** Gives the player a disguise to not get caught for one time.  |
 | ![Banana Sprite](./images/banana.png)  | **Banana:** Gives a banana to a player to distract the cleaning lady
-
-|  
-
+|
 | ![Pencil Sprite](./images/pencil.png)  | **Pencil:** Gives a pencil to the player to throw it at enemies.| 
-
 | ![Paper Plane Thrower Sprite](./images/paperPlane.png)  | **Paper Plane:** Gives the player the ability to glide. By holding "shift" while airborne, the player deploys a paper airplane that reduces the speed at which the player falls, but does not stop going forward/backwards.| 
-
 | ![Ruler Sprite](./images/ruler.png)  | **Ruler:** Gives a ruler to the player to thrust it at enemies. Each ruler can be used to defeat up to two enemies. After defeating two enemies, the ruler breaks and the player needs to pick up another one.| 
 
 
 
 ## Assets
-### Font
-[Free Pixel Font](https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059)
+
 ### Sprites
 
 Most of the sprites were made by the team. The only sprite not done by the team was the smoke the enemies leave behind, the banana and the ladders.
