@@ -17,7 +17,8 @@ public class ProjectileScript : MonoBehaviour
     private PlayerScript _ps;
     private bool _initiated = false;
     public bool enemyProjectile;
-    
+
+    [SerializeField] private GameObject smokePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +82,8 @@ public class ProjectileScript : MonoBehaviour
         
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Box"))
         {
+            GameObject obj = Instantiate(smokePrefab, transform.position, transform.rotation);
+            
             Destroy(gameObject);
         }
     }
