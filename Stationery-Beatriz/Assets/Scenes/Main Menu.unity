@@ -1960,6 +1960,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Select Level
       objectReference: {fileID: 0}
+    - target: {fileID: 4467464127739851346, guid: d4e5bdedbb72cb54b963406f4668a7c8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4e5bdedbb72cb54b963406f4668a7c8, type: 3}
 --- !u!1 &1425670073
@@ -2997,14 +3001,17 @@ MonoBehaviour:
     description: Help D. Beatriz get through to the exit on her first adventure in
       FEUP
     thumbnail: {fileID: 21300000, guid: 064ded1898e51ab4690282b61235a46c, type: 3}
+    available: 1
   - sceneName: Level 2
     title: Level 2
     description: New toys?
-    thumbnail: {fileID: 0}
+    thumbnail: {fileID: 21300000, guid: 3a909eb990ce7b949b88d1a52540625e, type: 3}
+    available: 1
   - sceneName: Level 3
     title: Level 3
     description: Coming soon...
     thumbnail: {fileID: 0}
+    available: 0
 --- !u!224 &1887474388 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4467464126822100132, guid: d4e5bdedbb72cb54b963406f4668a7c8, type: 3}

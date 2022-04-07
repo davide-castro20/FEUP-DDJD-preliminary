@@ -14,6 +14,7 @@ public class LevelCell : MonoBehaviour
     [SerializeField] private Image thumbnail;
 
     private string _sceneName;
+
     
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,11 @@ public class LevelCell : MonoBehaviour
         description.text = level.description;
         thumbnail.sprite = level.thumbnail;
         _sceneName = level.sceneName;
+
+        if (!level.available)
+        {
+            Destroy(GetComponent<Button>());
+        }
     }
 
     public void StartLevel()

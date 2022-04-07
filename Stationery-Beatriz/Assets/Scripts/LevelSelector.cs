@@ -12,6 +12,7 @@ public class LevelSelector : MonoBehaviour
         public string title;
         public string description;
         public Sprite thumbnail;
+        public bool available;
     }
 
     public GameObject CellPrefab;
