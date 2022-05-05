@@ -55,19 +55,13 @@ After doing so, download the executable and run it.
 
 ### Power Ups
 
-|                    Power Up Sprite                     | Description                                                               |
-| :----------------------------------------------------: | ------------------------------------------------------------------------- |
-|       ![Disguise Sprite](./images/disguise.png)        | **Disguise:** Gives the player a disguise to not get caught for one time. |
-|         ![Banana Sprite](./images/banana.png)          | **Banana:** Gives a banana to a player to distract the cleaning lady      |
-|         ![Pencil Sprite](./images/pencil.png)          | **Pencil:** Gives a pencil to the player to throw it at enemies.          |
-| ![Paper Plane Thrower Sprite](./images/paperPlane.png) | **Paper Plane:** Gives                                                    |
-
-the player the ability to glide. By holding "shift" while airborne, the player
-deploys a paper airplane that reduces the speed at which the player falls, but
-does not stop going forward/backwards.| | ![Ruler Sprite](./images/ruler.png) |
-**Ruler:** Gives a ruler to the player to thrust it at enemies. Each ruler can
-be used to defeat up to two enemies. After defeating two enemies, the ruler
-breaks and the player needs to pick up another one.|
+|                    Power Up Sprite                     | Description                                                                                                                                                                                                                 |
+| :----------------------------------------------------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|       ![Disguise Sprite](./images/disguise.png)        | **Disguise:** Gives the player a disguise to not get caught for one time.                                                                                                                                                   |
+|         ![Banana Sprite](./images/banana.png)          | **Banana:** Gives a banana to a player to distract the cleaning lady                                                                                                                                                        |
+|         ![Pencil Sprite](./images/pencil.png)          | **Pencil:** Gives a pencil to the player to throw it at enemies.                                                                                                                                                            |
+| ![Paper Plane Thrower Sprite](./images/paperPlane.png) | **Paper Plane:** Gives the player the ability to glide. By holding "shift" while airborne, the player deploys a paper airplane that reduces the speed at which the player falls, but does not stop going forward/backwards. |
+|          ![Ruler Sprite](./images/ruler.png)           | **Ruler:** Gives a ruler to the player to thrust it at enemies. Each ruler can be used to defeat up to two enemies. After defeating two enemies, the ruler breaks and the player needs to pick up another one.              |
 
 ## Assets
 
@@ -121,4 +115,3 @@ edited for each individual enemy. For example, the door enemy. The range in
 which the player is detected by this enemy can be adjusted for each instance of
 this enemy, and the indicator above the door will also self adjust to match the
 new range.
-
